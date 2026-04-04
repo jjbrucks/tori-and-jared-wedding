@@ -1,0 +1,2271 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tori &amp; Jared — Wedding Weekend Schedule</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&amp;family=Lato:wght@300;400;700&amp;display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --sage:        #7a9e7e;
+      --sage-dark:   #5c7a60;
+      --sage-mid:    #9ab99e;
+      --sage-light:  #c8deca;
+      --sage-pale:   #e4efe5;
+      --cream:       #faf6ef;
+      --ivory:       #f5ede0;
+      --warm-brown:  #8b7355;
+      --text-dark:   #3d3226;
+      --text-mid:    #5c5040;
+      --text-light:  #8a7a66;
+      --gold:        #c8a96e;
+      --gold-light:  #e8d5aa;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Lato', sans-serif;
+      background: var(--cream);
+      color: var(--text-dark);
+      min-height: 100vh;
+    }
+
+    /* ── FLORAL SVG DECORATIONS ── */
+    .floral-top {
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 100%;
+      pointer-events: none;
+      overflow: hidden;
+    }
+
+    /* ── HERO ── */
+    .hero {
+      position: relative;
+      background: linear-gradient(160deg, #4e6e52 0%, #6b9170 40%, #8aab8e 70%, #a9c4ac 100%);
+      color: white;
+      text-align: center;
+      padding: 70px 20px 80px;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 60% 40% at 10% 20%, rgba(255,255,255,0.08) 0%, transparent 70%),
+        radial-gradient(ellipse 40% 60% at 90% 80%, rgba(255,255,255,0.06) 0%, transparent 70%);
+    }
+
+    /* Decorative botanical corners using CSS */
+    .hero-corner {
+      position: absolute;
+      opacity: 0.35;
+    }
+    .hero-corner.tl { top: 0; left: 0; transform-origin: top left; }
+    .hero-corner.tr { top: 0; right: 0; transform: scaleX(-1); transform-origin: top right; }
+    .hero-corner.bl { bottom: 0; left: 0; transform: scaleY(-1); transform-origin: bottom left; }
+    .hero-corner.br { bottom: 0; right: 0; transform: scale(-1); transform-origin: bottom right; }
+
+    .hero-inner { position: relative; z-index: 1; }
+
+    .hero-eyebrow {
+      font-family: 'Lato', sans-serif;
+      font-weight: 300;
+      font-size: 0.75rem;
+      letter-spacing: 0.35em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.8);
+      margin-bottom: 18px;
+    }
+
+    .hero h1 {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 300;
+      font-size: clamp(3rem, 8vw, 6rem);
+      line-height: 1.05;
+      letter-spacing: 0.02em;
+      margin-bottom: 8px;
+    }
+
+    .hero h1 .amp {
+      font-style: italic;
+      font-weight: 300;
+      color: var(--gold-light);
+    }
+
+    .hero-sub {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: clamp(1.1rem, 3vw, 1.6rem);
+      color: rgba(255,255,255,0.88);
+      margin-bottom: 6px;
+      font-weight: 300;
+    }
+
+    .hero-location {
+      font-family: 'Lato', sans-serif;
+      font-weight: 300;
+      font-size: 0.8rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.7);
+      margin-top: 12px;
+    }
+
+    .hero-divider {
+      width: 80px;
+      height: 1px;
+      background: rgba(255,255,255,0.45);
+      margin: 22px auto;
+    }
+
+    /* ── OVERVIEW STRIP ── */
+    .overview-strip {
+      background: var(--ivory);
+      border-bottom: 1px solid rgba(122,158,126,0.2);
+      padding: 36px 20px;
+    }
+
+    .overview-inner {
+      max-width: 900px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 20px;
+    }
+
+    .venue-card {
+      background: white;
+      border: 1px solid var(--sage-light);
+      border-top: 3px solid var(--sage);
+      border-radius: 6px;
+      padding: 18px 20px;
+    }
+
+    .venue-card .vc-label {
+      font-size: 0.65rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--sage-dark);
+      font-weight: 700;
+      margin-bottom: 6px;
+    }
+
+    .venue-card .vc-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.15rem;
+      font-weight: 500;
+      color: var(--text-dark);
+      margin-bottom: 4px;
+      line-height: 1.2;
+    }
+
+    .venue-card .vc-time {
+      font-size: 0.78rem;
+      color: var(--text-light);
+    }
+
+    .venue-card .vc-addr {
+      font-size: 0.72rem;
+      color: var(--text-light);
+      margin-top: 4px;
+      line-height: 1.4;
+    }
+
+    /* ── TABS ── */
+    .tabs-wrapper {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: white;
+      border-bottom: 2px solid var(--sage-light);
+      box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    }
+
+    .tabs {
+      max-width: 900px;
+      margin: 0 auto;
+      display: flex;
+      overflow-x: auto;
+      scrollbar-width: none;
+    }
+
+    .tabs::-webkit-scrollbar { display: none; }
+
+    .tab-btn {
+      flex: 1;
+      min-width: 130px;
+      padding: 16px 12px 14px;
+      border: none;
+      background: transparent;
+      cursor: pointer;
+      font-family: 'Lato', sans-serif;
+      font-size: 0.78rem;
+      font-weight: 400;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--text-light);
+      border-bottom: 3px solid transparent;
+      margin-bottom: -2px;
+      transition: color 0.2s, border-color 0.2s, background 0.2s;
+      white-space: nowrap;
+    }
+
+    .tab-btn .tab-day {
+      display: block;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.05rem;
+      font-weight: 500;
+      font-style: italic;
+      letter-spacing: 0.02em;
+      text-transform: none;
+      color: inherit;
+      margin-bottom: 1px;
+    }
+
+    .tab-btn:hover {
+      background: var(--sage-pale);
+      color: var(--sage-dark);
+    }
+
+    .tab-btn.active {
+      color: var(--sage-dark);
+      border-bottom-color: var(--sage);
+      font-weight: 700;
+    }
+
+    .tab-btn.active .tab-day { color: var(--sage-dark); }
+
+    /* ── CONTENT SECTIONS ── */
+    .content {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 40px 20px 80px;
+    }
+
+    .day-section { display: none; }
+    .day-section.active { display: block; }
+
+    .day-header {
+      display: flex;
+      align-items: baseline;
+      gap: 16px;
+      margin-bottom: 32px;
+      padding-bottom: 16px;
+      border-bottom: 1px solid var(--sage-light);
+    }
+
+    .day-header h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 400;
+      font-size: clamp(1.8rem, 5vw, 2.6rem);
+      color: var(--text-dark);
+    }
+
+    .day-header .day-badge {
+      font-size: 0.7rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: white;
+      background: var(--sage);
+      padding: 4px 10px;
+      border-radius: 20px;
+      font-weight: 700;
+    }
+
+    /* ── SECTION GROUPING ── */
+    .schedule-group {
+      margin-bottom: 36px;
+    }
+
+    .group-title {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 16px;
+    }
+
+    .group-title span {
+      font-size: 0.65rem;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      font-weight: 700;
+      color: var(--sage-dark);
+    }
+
+    .group-title::before,
+    .group-title::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--sage-light);
+    }
+
+    .group-title::before { display: none; }
+
+    /* ── TIMELINE ITEMS ── */
+    .timeline {
+      position: relative;
+      padding-left: 28px;
+    }
+
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 8px;
+      top: 8px;
+      bottom: 8px;
+      width: 1px;
+      background: linear-gradient(to bottom, var(--sage-light), rgba(200,222,202,0.2));
+    }
+
+    .tl-item {
+      position: relative;
+      margin-bottom: 14px;
+      background: white;
+      border: 1px solid rgba(200,222,202,0.6);
+      border-radius: 8px;
+      padding: 14px 18px;
+      transition: box-shadow 0.2s, border-color 0.2s;
+    }
+
+    .tl-item:hover {
+      box-shadow: 0 3px 16px rgba(92,122,96,0.12);
+      border-color: var(--sage-mid);
+    }
+
+    .tl-item::before {
+      content: '';
+      position: absolute;
+      left: -24px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+      background: var(--sage);
+      border: 2px solid var(--cream);
+      box-shadow: 0 0 0 1px var(--sage);
+    }
+
+    .tl-item.highlight {
+      border-color: var(--gold);
+      border-left: 3px solid var(--gold);
+      background: linear-gradient(to right, rgba(200,169,110,0.05), white 30%);
+    }
+
+    .tl-item.highlight::before { background: var(--gold); box-shadow: 0 0 0 1px var(--gold); }
+
+    .tl-row {
+      display: flex;
+      align-items: baseline;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+
+    .tl-time {
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      color: var(--sage-dark);
+      min-width: 90px;
+      flex-shrink: 0;
+    }
+
+    .tl-event {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.1rem;
+      font-weight: 500;
+      color: var(--text-dark);
+      flex: 1;
+    }
+
+    .tl-who {
+      font-size: 0.72rem;
+      color: white;
+      background: var(--sage-mid);
+      padding: 2px 9px;
+      border-radius: 20px;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+
+    .tl-details {
+      margin-top: 5px;
+      font-size: 0.8rem;
+      color: var(--text-light);
+      line-height: 1.5;
+    }
+
+    .tl-location {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      font-size: 0.72rem;
+      color: var(--sage-dark);
+      margin-top: 5px;
+    }
+
+    .tl-location svg { flex-shrink: 0; }
+
+    /* ── HAIR + MAKEUP TABLE ── */
+    .hm-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.85rem;
+      margin-top: 8px;
+    }
+
+    .hm-table th {
+      background: var(--sage-pale);
+      color: var(--sage-dark);
+      font-weight: 700;
+      font-size: 0.68rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      padding: 9px 14px;
+      text-align: left;
+      border-bottom: 2px solid var(--sage-light);
+    }
+
+    .hm-table td {
+      padding: 9px 14px;
+      border-bottom: 1px solid var(--sage-pale);
+      color: var(--text-mid);
+    }
+
+    .hm-table tr:last-child td { border-bottom: none; }
+
+    .hm-table tr:hover td { background: var(--sage-pale); }
+
+    .hm-table td:first-child { font-weight: 700; color: var(--sage-dark); font-size: 0.78rem; }
+
+    .hm-table td:nth-child(2) {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1rem;
+      color: var(--text-dark);
+    }
+
+    /* ── INFO CARDS ── */
+    .info-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 16px;
+      margin-bottom: 32px;
+    }
+
+    .info-card {
+      background: white;
+      border: 1px solid var(--sage-light);
+      border-radius: 8px;
+      padding: 20px 22px;
+    }
+
+    .info-card .ic-icon {
+      font-size: 1.4rem;
+      margin-bottom: 10px;
+    }
+
+    .info-card .ic-title {
+      font-size: 0.65rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      font-weight: 700;
+      color: var(--sage-dark);
+      margin-bottom: 6px;
+    }
+
+    .info-card .ic-val {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.05rem;
+      font-weight: 500;
+      color: var(--text-dark);
+      line-height: 1.4;
+    }
+
+    .info-card .ic-sub {
+      font-size: 0.78rem;
+      color: var(--text-light);
+      margin-top: 4px;
+      line-height: 1.4;
+    }
+
+    /* ── PLANNING NOTES ── */
+    .planning-box {
+      background: rgba(200,222,202,0.18);
+      border: 1px solid var(--sage-light);
+      border-left: 3px solid var(--sage);
+      border-radius: 6px;
+      padding: 16px 18px;
+      margin-top: 24px;
+    }
+
+    .planning-box .pb-title {
+      font-size: 0.65rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      font-weight: 700;
+      color: var(--sage-dark);
+      margin-bottom: 10px;
+    }
+
+    .planning-box ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .planning-box li {
+      font-size: 0.82rem;
+      color: var(--text-mid);
+      line-height: 1.5;
+      padding: 4px 0 4px 18px;
+      position: relative;
+      border-bottom: 1px solid rgba(200,222,202,0.35);
+    }
+
+    .planning-box li:last-child { border-bottom: none; }
+
+    .planning-box li::before {
+      content: '→';
+      position: absolute;
+      left: 0;
+      color: var(--sage);
+      font-size: 0.75rem;
+    }
+
+    /* ── EDIT MODE ── */
+    .edit-fab {
+      position: fixed;
+      bottom: 28px;
+      right: 28px;
+      z-index: 999;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 10px;
+    }
+
+    .fab-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 12px 22px;
+      border: none;
+      border-radius: 50px;
+      cursor: pointer;
+      font-family: 'Lato', sans-serif;
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      box-shadow: 0 4px 18px rgba(0,0,0,0.18);
+      transition: transform 0.15s, box-shadow 0.15s;
+      white-space: nowrap;
+    }
+
+    .fab-btn:hover { transform: translateY(-2px); box-shadow: 0 6px 24px rgba(0,0,0,0.22); }
+    .fab-btn:active { transform: translateY(0); }
+
+    .fab-edit { background: var(--sage); color: white; }
+    .fab-done { background: var(--sage-dark); color: white; display: none; }
+    .fab-save { background: var(--gold); color: var(--text-dark); display: none; }
+
+    body.editing .fab-edit { display: none; }
+    body.editing .fab-done { display: inline-flex; }
+    body.editing .fab-save { display: inline-flex; }
+
+    /* Edit-mode banner */
+    .edit-banner {
+      display: none;
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 200;
+      background: var(--sage-dark);
+      color: white;
+      text-align: center;
+      padding: 8px 16px;
+      font-size: 0.72rem;
+      font-weight: 400;
+      letter-spacing: 0.08em;
+    }
+
+    .edit-banner strong { font-weight: 700; margin: 0 6px; }
+    .edit-banner .sep { opacity: 0.4; margin: 0 4px; }
+
+    body.editing .edit-banner { display: block; }
+    body.editing .tabs-wrapper { top: 35px; }
+
+    /* Editable text fields */
+    body.editing [contenteditable="true"] {
+      outline: none;
+      border-radius: 3px;
+      padding: 1px 4px;
+      margin: -1px -4px;
+      background: rgba(122,158,126,0.12);
+      cursor: text;
+      transition: background 0.15s, box-shadow 0.15s;
+      min-width: 20px;
+      display: inline-block;
+    }
+
+    body.editing [contenteditable="true"]:hover {
+      background: rgba(122,158,126,0.18);
+    }
+
+    body.editing [contenteditable="true"]:focus {
+      background: rgba(255,255,255,0.9);
+      box-shadow: 0 0 0 2px var(--sage), 0 2px 8px rgba(92,122,96,0.2);
+      color: var(--text-dark);
+    }
+
+    body.editing [contenteditable="true"]:empty::before {
+      content: attr(data-ph);
+      color: var(--sage-mid);
+      font-style: italic;
+      font-weight: 300;
+    }
+
+    /* ── DRAG HANDLE ── */
+    .drag-handle {
+      display: none;
+      position: absolute;
+      left: 0; top: 0; bottom: 0;
+      width: 26px;
+      align-items: center;
+      justify-content: center;
+      cursor: grab;
+      color: var(--sage-light);
+      border-radius: 8px 0 0 8px;
+      transition: color 0.15s, background 0.15s;
+      font-size: 13px;
+      letter-spacing: -1px;
+      user-select: none;
+      -webkit-user-select: none;
+    }
+
+    .drag-handle:hover { color: var(--sage); background: rgba(122,158,126,0.08); }
+    .drag-handle:active { cursor: grabbing; }
+
+    body.editing .drag-handle { display: flex; }
+    body.editing .tl-item { padding-left: 36px; }
+
+    /* Dragging states */
+    .tl-item.is-dragging {
+      opacity: 0.35;
+      box-shadow: none !important;
+    }
+
+    .venue-card.is-dragging { opacity: 0.35; }
+
+    /* Snap drop indicator */
+    .drop-line {
+      display: none;
+      height: 3px;
+      background: var(--sage);
+      border-radius: 3px;
+      margin: 0 0 -3px;
+      position: relative;
+      z-index: 50;
+      pointer-events: none;
+      animation: dropLinePulse 0.8s ease-in-out infinite alternate;
+    }
+
+    .drop-line::before {
+      content: '';
+      position: absolute;
+      left: -5px;
+      top: -4px;
+      width: 11px;
+      height: 11px;
+      border-radius: 50%;
+      background: var(--sage);
+    }
+
+    @keyframes dropLinePulse {
+      from { opacity: 0.7; }
+      to   { opacity: 1; box-shadow: 0 0 8px rgba(122,158,126,0.6); }
+    }
+
+    .drop-line.visible { display: block; }
+
+    /* Venue card drag target */
+    .venue-card.drop-target-before {
+      outline: 2px solid var(--sage);
+      outline-offset: 2px;
+    }
+
+    /* ── DELETE / ADD CONTROLS ── */
+    .tl-item { position: relative; }
+
+    .btn-delete-item {
+      display: none;
+      position: absolute;
+      top: 8px; right: 8px;
+      width: 22px; height: 22px;
+      border-radius: 50%;
+      border: none;
+      background: #ef9a9a;
+      color: white;
+      font-size: 0.9rem;
+      line-height: 1;
+      cursor: pointer;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.15s, transform 0.1s;
+      z-index: 10;
+    }
+
+    .btn-delete-item:hover { background: #e53935; transform: scale(1.15); }
+    body.editing .btn-delete-item { display: flex; }
+
+    .planning-box li { padding-right: 28px; }
+
+    .btn-delete-li {
+      display: none;
+      position: absolute;
+      right: 0; top: 50%;
+      transform: translateY(-50%);
+      background: none;
+      border: none;
+      color: #ef9a9a;
+      font-size: 1.1rem;
+      cursor: pointer;
+      padding: 0 2px;
+      transition: color 0.15s;
+    }
+
+    .btn-delete-li:hover { color: #e53935; }
+    body.editing .btn-delete-li { display: inline; }
+
+    .venue-card { position: relative; }
+
+    .btn-delete-card {
+      display: none;
+      position: absolute;
+      top: 7px; right: 9px;
+      background: none;
+      border: none;
+      color: #ef9a9a;
+      font-size: 1.2rem;
+      cursor: pointer;
+      line-height: 1;
+      padding: 2px;
+      transition: color 0.15s;
+    }
+
+    .btn-delete-card:hover { color: #e53935; }
+    body.editing .btn-delete-card { display: block; }
+
+    .btn-add-item {
+      display: none;
+      width: 100%;
+      margin-top: 10px;
+      padding: 10px;
+      background: rgba(122,158,126,0.06);
+      border: 1.5px dashed var(--sage-mid);
+      border-radius: 8px;
+      color: var(--sage-dark);
+      font-family: 'Lato', sans-serif;
+      font-size: 0.76rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: background 0.15s, border-color 0.15s;
+    }
+
+    .btn-add-item:hover { background: rgba(122,158,126,0.14); border-color: var(--sage); }
+    body.editing .btn-add-item { display: block; }
+
+    .btn-add-note {
+      display: none;
+      margin-top: 8px;
+      padding: 6px 14px;
+      background: none;
+      border: 1.5px dashed var(--sage-mid);
+      border-radius: 20px;
+      color: var(--sage-dark);
+      font-family: 'Lato', sans-serif;
+      font-size: 0.73rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: background 0.15s;
+    }
+
+    .btn-add-note:hover { background: rgba(122,158,126,0.1); }
+    body.editing .btn-add-note { display: inline-block; }
+
+    .btn-add-hmrow {
+      display: none;
+      width: 100%;
+      padding: 9px;
+      background: rgba(122,158,126,0.06);
+      border: 1.5px dashed var(--sage-mid);
+      border-radius: 0 0 8px 8px;
+      color: var(--sage-dark);
+      font-family: 'Lato', sans-serif;
+      font-size: 0.76rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: background 0.15s;
+    }
+
+    .btn-add-hmrow:hover { background: rgba(122,158,126,0.14); }
+    body.editing .btn-add-hmrow { display: block; }
+
+    .btn-delete-tr {
+      display: none;
+      background: none;
+      border: none;
+      color: #ef9a9a;
+      font-size: 1rem;
+      cursor: pointer;
+      padding: 0 4px;
+      transition: color 0.15s;
+    }
+
+    .btn-delete-tr:hover { color: #e53935; }
+    body.editing .btn-delete-tr { display: inline; }
+
+    /* Add venue card button */
+    .btn-add-venue {
+      display: none;
+      min-width: 160px;
+      background: rgba(122,158,126,0.06);
+      border: 1.5px dashed var(--sage-mid);
+      border-radius: 6px;
+      color: var(--sage-dark);
+      font-family: 'Lato', sans-serif;
+      font-size: 0.73rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      cursor: pointer;
+      padding: 18px 20px;
+      transition: background 0.15s;
+      align-self: stretch;
+    }
+
+    .btn-add-venue:hover { background: rgba(122,158,126,0.14); }
+    body.editing .btn-add-venue { display: block; }
+
+    /* ── FLORAL FOOTER ── */
+    .footer {
+      text-align: center;
+      padding: 50px 20px 60px;
+      background: linear-gradient(to bottom, var(--cream), var(--ivory));
+      border-top: 1px solid var(--sage-light);
+    }
+
+    .footer-motif {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: 1.8rem;
+      color: var(--sage);
+      margin-bottom: 10px;
+    }
+
+    .footer p {
+      font-size: 0.78rem;
+      color: var(--text-light);
+      letter-spacing: 0.1em;
+    }
+
+    /* ── FLORAL SVG ── */
+    .floral-divider {
+      text-align: center;
+      color: var(--sage-mid);
+      font-size: 1.4rem;
+      margin: 10px 0 20px;
+      opacity: 0.7;
+    }
+
+    /* ── SOLA CALLOUT ── */
+    .sola-callout {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      background: linear-gradient(135deg, #fdf4e7, #fef9f0);
+      border: 1.5px solid #e8c97a;
+      border-left: 5px solid #c8973a;
+      border-radius: 10px;
+      padding: 18px 20px;
+      margin-bottom: 24px;
+    }
+    .sola-callout .sc-icon {
+      font-size: 1.8rem;
+      line-height: 1;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+    .sola-callout .sc-body { flex: 1; }
+    .sola-callout .sc-heading {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.15rem;
+      font-weight: 600;
+      color: #7a4f1a;
+      margin-bottom: 4px;
+      line-height: 1.2;
+    }
+    .sola-callout .sc-text {
+      font-size: 0.82rem;
+      color: #8a6030;
+      line-height: 1.5;
+      margin-bottom: 10px;
+    }
+    .sola-callout .sc-who {
+      display: inline-block;
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #7a4f1a;
+      background: rgba(200,151,58,0.15);
+      border: 1px solid rgba(200,151,58,0.35);
+      border-radius: 20px;
+      padding: 2px 10px;
+      margin-bottom: 10px;
+    }
+    .sola-callout .sc-links { display: flex; gap: 8px; flex-wrap: wrap; }
+
+    /* ══ PIZAZZ ══ */
+
+    /* Richer hero */
+    .hero {
+      background: linear-gradient(135deg, #243f27 0%, #36593c 18%, #4d7854 40%, #6b9470 65%, #90b494 85%, #b8d2bc 100%) !important;
+    }
+    .hero::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 50% 60% at 20% 30%, rgba(255,255,255,0.13) 0%, transparent 60%),
+        radial-gradient(ellipse 40% 50% at 80% 70%, rgba(200,169,110,0.18) 0%, transparent 55%),
+        repeating-linear-gradient(45deg, transparent, transparent 18px, rgba(255,255,255,0.015) 18px, rgba(255,255,255,0.015) 19px);
+      pointer-events: none;
+      z-index: 0;
+    }
+    .hero-inner { z-index: 2 !important; }
+    .hero-corner { opacity: 0.55 !important; }
+    .hero h1 { text-shadow: 0 3px 30px rgba(0,0,0,0.28), 0 1px 0 rgba(255,255,255,0.08); }
+    .hero-divider {
+      width: 120px;
+      background: linear-gradient(to right, transparent, rgba(255,255,255,0.6), rgba(200,169,110,0.8), rgba(255,255,255,0.6), transparent);
+      height: 1px;
+    }
+
+    /* Subtle botanical pattern on body */
+    body {
+      background-image:
+        radial-gradient(circle, rgba(122,158,126,0.06) 1px, transparent 1px),
+        radial-gradient(circle, rgba(200,169,110,0.04) 1px, transparent 1px);
+      background-size: 28px 28px, 56px 56px;
+      background-position: 0 0, 14px 14px;
+    }
+
+    /* Lush overview strip */
+    .overview-strip {
+      background: linear-gradient(135deg, #ede8dc 0%, #e6ede6 40%, #dfe9df 70%, #ede8dc 100%);
+    }
+
+    /* Venue card hover lift */
+    .venue-card {
+      transition: transform 0.22s ease, box-shadow 0.22s ease, border-top-color 0.22s ease;
+    }
+    .venue-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 10px 28px rgba(92,122,96,0.18);
+      border-top-color: var(--gold);
+    }
+
+    /* Richer tab bar */
+    .tabs-wrapper {
+      background: linear-gradient(to bottom, #ffffff, #f9f5ef);
+    }
+    .tab-btn.active {
+      background: linear-gradient(to bottom, rgba(122,158,126,0.07), transparent);
+      border-bottom-color: var(--sage-dark) !important;
+    }
+    .tab-btn.active .tab-day {
+      background: linear-gradient(135deg, var(--sage-dark), var(--gold));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    /* Day header gradient rule */
+    .day-header {
+      border-bottom: none !important;
+      padding-bottom: 20px;
+      position: relative;
+    }
+    .day-header::after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0; width: 100%; height: 2px;
+      background: linear-gradient(to right, var(--sage-dark), var(--gold) 40%, var(--sage-mid) 70%, transparent);
+      border-radius: 2px;
+    }
+
+    /* Group title - both lines now visible with gradient */
+    .group-title::before { display: flex !important; background: linear-gradient(to right, transparent, var(--sage-light)); }
+    .group-title::after  { background: linear-gradient(to left, transparent, var(--sage-light)); }
+    .group-title span {
+      color: var(--sage-dark);
+      background: var(--cream);
+      padding: 0 14px;
+      position: relative;
+    }
+
+    /* Timeline entrance animation */
+    @keyframes tlIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    .day-section.active .tl-item { animation: tlIn 0.35s ease both; }
+    .day-section.active .tl-item:nth-child(1)  { animation-delay: 0.03s; }
+    .day-section.active .tl-item:nth-child(2)  { animation-delay: 0.07s; }
+    .day-section.active .tl-item:nth-child(3)  { animation-delay: 0.11s; }
+    .day-section.active .tl-item:nth-child(4)  { animation-delay: 0.15s; }
+    .day-section.active .tl-item:nth-child(5)  { animation-delay: 0.19s; }
+    .day-section.active .tl-item:nth-child(6)  { animation-delay: 0.23s; }
+    .day-section.active .tl-item:nth-child(7)  { animation-delay: 0.27s; }
+    .day-section.active .tl-item:nth-child(8)  { animation-delay: 0.31s; }
+    .day-section.active .tl-item:nth-child(n+9){ animation-delay: 0.35s; }
+
+    /* Richer timeline line */
+    .timeline::before {
+      background: linear-gradient(to bottom, var(--sage), var(--gold) 50%, rgba(200,222,202,0.15)) !important;
+      width: 2px !important;
+    }
+
+    /* Richer timeline node */
+    .tl-item::before {
+      width: 11px !important; height: 11px !important;
+      border-width: 2px !important;
+      box-shadow: 0 0 0 1px var(--sage), 0 0 8px rgba(122,158,126,0.3) !important;
+    }
+
+    /* Richer highlight items */
+    .tl-item.highlight {
+      background: linear-gradient(to right, rgba(200,169,110,0.1), rgba(200,169,110,0.03) 50%, white) !important;
+      border-left-width: 4px;
+      box-shadow: 0 2px 12px rgba(200,169,110,0.12);
+    }
+
+    /* Gold pulse on highlight nodes */
+    @keyframes goldPulse {
+      0%, 100% { box-shadow: 0 0 0 1px var(--gold); }
+      50%       { box-shadow: 0 0 0 5px rgba(200,169,110,0.25), 0 0 0 1px var(--gold); }
+    }
+    .tl-item.highlight::before { animation: goldPulse 2.5s ease-in-out infinite; }
+
+    /* Info cards hover */
+    .info-card {
+      transition: transform 0.2s, box-shadow 0.2s;
+      border-top: 3px solid transparent;
+    }
+    .info-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 22px rgba(92,122,96,0.13);
+      border-top-color: var(--sage);
+    }
+
+    /* Link chip styling */
+    .tl-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      margin-top: 7px;
+      margin-right: 8px;
+      padding: 4px 11px;
+      border-radius: 20px;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      text-decoration: none;
+      transition: transform 0.15s, box-shadow 0.15s, background 0.15s;
+    }
+    .tl-link:hover { transform: translateY(-1px); box-shadow: 0 3px 10px rgba(0,0,0,0.15); }
+    .tl-link.link-sage {
+      background: var(--sage-pale);
+      color: var(--sage-dark);
+      border: 1px solid var(--sage-light);
+    }
+    .tl-link.link-sage:hover { background: var(--sage-light); }
+    .tl-link.link-gold {
+      background: rgba(200,169,110,0.12);
+      color: #8a6a2e;
+      border: 1px solid rgba(200,169,110,0.4);
+    }
+    .tl-link.link-gold:hover { background: rgba(200,169,110,0.22); }
+
+    /* Richer footer */
+    .footer {
+      background: linear-gradient(160deg, #f5ede0 0%, #e6ede6 50%, #f5ede0 100%) !important;
+      border-top: none !important;
+      position: relative;
+      padding-top: 60px !important;
+    }
+    .footer::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      background: linear-gradient(to right, transparent, var(--sage-dark), var(--gold), var(--sage-dark), transparent);
+    }
+    .footer-motif {
+      font-size: 2.4rem !important;
+      background: linear-gradient(135deg, var(--sage-dark), var(--gold), var(--sage));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 600px) {
+      .hero { padding: 50px 16px 60px; }
+      .content { padding: 24px 14px 60px; }
+      .tl-item { padding: 12px 14px; }
+      .tl-row { gap: 8px; }
+      .tl-time { min-width: 75px; font-size: 0.68rem; }
+      .tabs { gap: 0; }
+      .tab-btn { min-width: 100px; padding: 12px 8px 10px; font-size: 0.7rem; }
+    }
+  </style>
+</head>
+<body class="">
+
+<div class="edit-banner">✏️ Edit Mode <span class="sep">|</span> <strong>Click text</strong> to edit <span class="sep">|</span> <strong>Drag ⠿</strong> to reorder <span class="sep">|</span> <strong>×</strong> to delete <span class="sep">|</span> <strong>+ buttons</strong> to add</div>
+
+<!-- ═══════════════════════════════ HERO ═══════════════════════════════ -->
+<header class="hero">
+
+  <!-- Botanical SVG corners -->
+  <svg class="hero-corner tl" width="220" height="220" viewBox="0 0 220 220" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M10,180 Q30,100 80,60 Q50,90 40,140 Q60,80 110,50 Q70,90 65,150 Q90,70 150,30 Q100,80 95,160" stroke="white" stroke-width="1.2" fill="none" stroke-linecap="round"></path>
+    <ellipse cx="85" cy="55" rx="18" ry="10" transform="rotate(-30 85 55)" fill="white" opacity=".6"></ellipse>
+    <ellipse cx="115" cy="42" rx="14" ry="8" transform="rotate(-50 115 42)" fill="white" opacity=".45"></ellipse>
+    <ellipse cx="58" cy="72" rx="12" ry="7" transform="rotate(-15 58 72)" fill="white" opacity=".5"></ellipse>
+    <ellipse cx="148" cy="30" rx="16" ry="9" transform="rotate(-40 148 30)" fill="white" opacity=".55"></ellipse>
+    <circle cx="88" cy="44" r="5" fill="white" opacity=".5"></circle>
+    <circle cx="118" cy="32" r="4" fill="white" opacity=".4"></circle>
+    <circle cx="152" cy="22" r="3.5" fill="white" opacity=".45"></circle>
+    <path d="M20,160 Q45,120 90,95" stroke="white" stroke-width="0.8" fill="none" opacity=".6" stroke-linecap="round"></path>
+    <path d="M35,170 Q65,130 100,110" stroke="white" stroke-width="0.8" fill="none" opacity=".5" stroke-linecap="round"></path>
+  </svg>
+
+  <svg class="hero-corner tr" width="220" height="220" viewBox="0 0 220 220" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M10,180 Q30,100 80,60 Q50,90 40,140 Q60,80 110,50 Q70,90 65,150 Q90,70 150,30 Q100,80 95,160" stroke="white" stroke-width="1.2" fill="none" stroke-linecap="round"></path>
+    <ellipse cx="85" cy="55" rx="18" ry="10" transform="rotate(-30 85 55)" fill="white" opacity=".6"></ellipse>
+    <ellipse cx="115" cy="42" rx="14" ry="8" transform="rotate(-50 115 42)" fill="white" opacity=".45"></ellipse>
+    <ellipse cx="58" cy="72" rx="12" ry="7" transform="rotate(-15 58 72)" fill="white" opacity=".5"></ellipse>
+    <ellipse cx="148" cy="30" rx="16" ry="9" transform="rotate(-40 148 30)" fill="white" opacity=".55"></ellipse>
+    <circle cx="88" cy="44" r="5" fill="white" opacity=".5"></circle>
+    <circle cx="118" cy="32" r="4" fill="white" opacity=".4"></circle>
+    <circle cx="152" cy="22" r="3.5" fill="white" opacity=".45"></circle>
+  </svg>
+
+  <svg class="hero-corner bl" width="160" height="160" viewBox="0 0 160 160" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M10,150 Q35,90 80,55 Q55,80 50,120" stroke="white" stroke-width="1" fill="none" stroke-linecap="round" opacity=".7"></path>
+    <ellipse cx="78" cy="50" rx="14" ry="8" transform="rotate(-35 78 50)" fill="white" opacity=".5"></ellipse>
+    <ellipse cx="105" cy="35" rx="11" ry="7" transform="rotate(-55 105 35)" fill="white" opacity=".4"></ellipse>
+    <circle cx="80" cy="40" r="4" fill="white" opacity=".45"></circle>
+  </svg>
+
+  <div class="hero-inner">
+    <p class="hero-eyebrow">Wedding Weekend Schedule</p>
+    <h1>Tori <span class="amp">&amp;</span> Jared</h1>
+    <div class="hero-divider"></div>
+    <p class="hero-sub">April 29 – May 2, 2026</p>
+    <p class="hero-location">Raleigh, North Carolina</p>
+  </div>
+</header>
+
+<!-- ═══════════════════════════ OVERVIEW VENUES ═══════════════════════════ -->
+<section class="overview-strip">
+  <div class="overview-inner">
+    <div class="venue-card">
+      <div class="vc-label">Getting Ready</div>
+      <div class="vc-name">The Airbnb</div>
+      <div class="vc-time">Saturday, May 2 — Morning</div>
+      <div class="vc-addr">4412 Major Loring Way, Raleigh, NC 27616</div>
+    <button class="btn-delete-card" title="Delete venue">×</button></div>
+    <div class="venue-card">
+      <div class="vc-label">Rehearsal</div>
+      <div class="vc-name">WRAL Azalea Gardens</div>
+      <div class="vc-time">Friday, May 1 — 12:00–1:00 PM</div>
+      <div class="vc-addr">4601 Beryl Road, Raleigh, NC</div>
+    <button class="btn-delete-card" title="Delete venue">×</button></div>
+    <div class="venue-card">
+      <div class="vc-label">Welcome Party</div>
+      <div class="vc-name">Bowstring Brewing</div>
+      <div class="vc-time">Friday, May 1 — 6:30–9:30 PM</div>
+      <div class="vc-addr">1930 Wake Forest Rd, Raleigh, NC 27608</div>
+    <button class="btn-delete-card" title="Delete venue">×</button></div>
+    <div class="venue-card">
+      <div class="vc-label">Ceremony</div>
+      <div class="vc-name">WRAL Azalea Gardens</div>
+      <div class="vc-time">Saturday, May 2 — 5:00 PM</div>
+      <div class="vc-addr">4601 Beryl Road, Raleigh, NC</div>
+    <button class="btn-delete-card" title="Delete venue">×</button></div>
+    <div class="venue-card">
+      <div class="vc-label">Reception</div>
+      <div class="vc-name">Second Empire</div>
+      <div class="vc-time">Saturday, May 2 — 6:15 PM</div>
+      <div class="vc-addr">330 Hillsborough St, Raleigh, NC</div>
+    <button class="btn-delete-card" title="Delete venue">×</button></div>
+    <div class="venue-card">
+      <div class="vc-label">After Party</div>
+      <div class="vc-name">Downtown Raleigh</div>
+      <div class="vc-time">Saturday, May 2 — ~9:00 PM</div>
+      <div class="vc-addr">The Moon Room / Boxcar Bar + Arcade</div>
+    <button class="btn-delete-card" title="Delete venue">×</button></div>
+  <div class="venue-card">
+    <div class="vc-label">Optional Hangout</div>
+    <div class="vc-name">Zinc House</div>
+    <div class="vc-time">Friday, May 2 - 1:30 -4:00 PM</div>
+    <div class="vc-addr">6225 Wake Forest Hwy, Durham, NC 27703</div>
+  <button class="btn-delete-card" title="Delete venue">×</button></div><button class="btn-add-venue">+ Add Venue</button></div>
+</section>
+
+<!-- ═══════════════════════════════ TABS ═══════════════════════════════ -->
+<nav class="tabs-wrapper" role="tablist">
+  <div class="tabs">
+    <button class="tab-btn" onclick="switchTab('wed')" role="tab" aria-selected="false">
+      <span class="tab-day">Wednesday</span>Apr 29
+    </button>
+    <button class="tab-btn" onclick="switchTab('thu')" role="tab" aria-selected="false">
+      <span class="tab-day">Thursday</span>Apr 30
+    </button>
+    <button class="tab-btn active" onclick="switchTab('fri')" role="tab" aria-selected="true">
+      <span class="tab-day">Friday</span>May 1
+    </button>
+    <button class="tab-btn" onclick="switchTab('sat')" role="tab" aria-selected="false">
+      <span class="tab-day">Saturday</span>May 2 — Wedding Day
+    </button>
+    <button class="tab-btn" onclick="switchTab('hm')" role="tab" aria-selected="false">
+      <span class="tab-day">Hair &amp; Makeup</span>Schedule
+    </button>
+  </div>
+</nav>
+
+<!-- ═══════════════════════════ CONTENT AREA ═══════════════════════════ -->
+<main class="content">
+
+  <!-- ── WEDNESDAY ── -->
+  <section id="tab-wed" class="day-section">
+    <div class="day-header">
+      <h2>Wednesday, April 29</h2>
+      <span class="day-badge">Arrivals</span>
+    </div>
+
+    <div class="info-grid">
+      <div class="info-card">
+        <div class="ic-icon">🌸</div>
+        <div class="ic-title">Airbnb Address</div>
+        <div class="ic-val">4412 Major Loring Way</div>
+        <div class="ic-sub">Raleigh, NC 27616</div>
+      </div>
+      <div class="info-card">
+        <div class="ic-icon">🍃</div>
+        <div class="ic-title">Theme for the Day</div>
+        <div class="ic-val">Arrivals &amp; Flowers</div>
+        <div class="ic-sub">Welcome the family and settle in</div>
+      </div>
+    </div>
+
+    <div class="schedule-group">
+      <div class="group-title"><span>Schedule</span></div>
+      <div class="timeline">
+        <div class="tl-item"><div class="drag-handle" title="Drag to reorder">⠿</div>
+          <div class="tl-row">
+            <span class="tl-time">9:00 AM</span>
+            <span class="tl-event">Trader Joe's — Look at Flowers</span>
+            <span class="tl-who">Tori + Jared</span>
+          </div>
+          <div class="tl-details">Browse flower options for bouquet-making</div>
+        <button class="btn-delete-item" title="Delete item">×</button></div>
+        <div class="tl-item"><div class="drag-handle" title="Drag to reorder">⠿</div>
+          <div class="tl-row">
+            <span class="tl-time">TBD</span>
+            <span class="tl-event">Nails</span>
+            <span class="tl-who">Tori + Lauren</span>
+          </div>
+        <button class="btn-delete-item" title="Delete item">×</button></div>
+        <div class="tl-item"><div class="drag-handle" title="Drag to reorder">⠿</div>
+          <div class="tl-row">
+            <span class="tl-time">TBD</span>
+            <span class="tl-event">Chris and Bob Arrive</span>
+          </div>
+          <div class="tl-details">Arrival time to be confirmed</div>
+        <button class="btn-delete-item" title="Delete item">×</button></div>
+        <div class="tl-item"><div class="drag-handle" title="Drag to reorder">⠿</div>
+          <div class="tl-row">
+            <span class="tl-time">After 3:00 PM</span>
+            <span class="tl-event">Terri and Howie Arrive, Hotel Check-in</span>
+            <span class="tl-who">Tori, Howie, Terri, Chris, Bob</span>
+          </div>
+          <div class="tl-details">Hotel check-in available after 3:00 PM</div>
+        <button class="btn-delete-item" title="Delete item">×</button></div>
+        <div class="tl-item" style="transition: opacity 0.25s, transform 0.25s;"><div class="drag-handle" title="Drag to reorder">⠿</div>
+    <div class="tl-row">
+      <span class="tl-time">5:00 PM</span>
+      <span class="tl-event">Bryan &amp; Gaby Arrive</span>
+      <span class="tl-who">Bryan, Gaby, Tori, Jared</span>
+    </div>
+    <div class="tl-details">RDU Airport Pick up</div>
+  <button class="btn-delete-item" title="Delete item">×</button></div>
+        <div class="tl-item" style="transition: opacity 0.25s, transform 0.25s;"><div class="drag-handle" title="Drag to reorder">⠿</div>
+    <div class="tl-row">
+      <span class="tl-time">11:30 PM</span>
+      <span class="tl-event">Ben Arrives</span>
+      <span class="tl-who">Ben, Tori, Jared</span>
+    </div>
+    <div class="tl-details">RDU Airport Pick up</div>
+  <button class="btn-delete-item" title="Delete item">×</button></div>
+      </div><button class="btn-add-item">+ Add Schedule Item</button>
+    </div>
+
+  </section>
+
+  <!-- ── THURSDAY ── -->
+  <section id="tab-thu" class="day-section">
+    <div class="day-header">
+      <h2>Thursday, April 30</h2>
+      <span class="day-badge">Bouquets &amp; Prep</span>
+    </div>
+
+    <div class="schedule-group">
+      <div class="group-title"><span>Schedule</span></div>
+      <div class="timeline">
+        
+        <div class="tl-item" style="transition: opacity 0.25s, transform 0.25s;"><div class="drag-handle" title="Drag to reorder">⠿</div>
+    <div class="tl-row">
+      <span class="tl-time">9:00 AM</span>
+      <span class="tl-event">Pick Up Flowers</span>
+      <span class="tl-who">Tori &amp; Jared</span>
+    </div>
+    <div class="tl-details">Trader Joe's</div>
+  <button class="btn-delete-item" title="Delete item">×</button></div>
+        <div class="tl-item highlight"><div class="drag-handle" title="Drag to reorder">⠿</div>
+          <div class="tl-row">
+            <span class="tl-time">Morning</span>
+            <span class="tl-event">Make Bouquets</span>
+            <span class="tl-who">Aunt Terri, Chris, Jared, Tori</span>
+          </div>
+          <div class="tl-details">Flower arranging day @ Tori &amp; Jared's</div>
+        <button class="btn-delete-item" title="Delete item">×</button></div>
+        <div class="tl-item"><div class="drag-handle" title="Drag to reorder">⠿</div>
+          <div class="tl-row">
+            <span class="tl-time">2:00 PM</span>
+            <span class="tl-event">Spray Tan</span>
+            <span class="tl-who">Tori</span>
+          </div>
+          <div class="tl-details">At Jared &amp; Tori's house</div>
+        <button class="btn-delete-item" title="Delete item">×</button></div>
+        <div class="tl-item"><div class="drag-handle" title="Drag to reorder">⠿</div>
+          <div class="tl-row">
+            <span class="tl-time">After 3:00 PM</span>
+            <span class="tl-event">Check Britani &amp; Jake into Hotel</span>
+            <span class="tl-who">Britani, Jake, Jessica, Tori</span>
+          </div>
+          <div class="tl-details">Hotel check-in available after 3:00 PM</div>
+        <button class="btn-delete-item" title="Delete item">×</button></div>
+      </div><button class="btn-add-item">+ Add Schedule Item</button>
+    </div>
+
+  </section>
+
+  <!-- ── FRIDAY ── -->
+  <section id="tab-fri" class="day-section active">
+    <div class="day-header">
+      <h2>Friday, May 1</h2>
+      <span class="day-badge">Rehearsal + Welcome Party</span>
+    </div>
+
+    <div class="schedule-group">
+      <div class="group-title"><span>Daytime</span></div>
+      <div class="timeline">
+        <div class="tl-item highlight"><div class="drag-handle" title="Drag to reorder">⠿</div>
+          <div class="tl-row">
+            <span class="tl-time">12:00–1:00 PM</span>
+            <span class="tl-event">Wedding Rehearsal</span>
+            <span class="tl-who">Wedding party + parents</span>
+          </div>
+          <div class="tl-location">
+            <svg width="10" height="13" viewBox="0 0 10 13" fill="none"><path d="M5 0C2.24 0 0 2.24 0 5c0 3.75 5 8 5 8s5-4.25 5-8c0-2.76-2.24-5-5-5zm0 6.5a1.5 1.5 0 110-3 1.5 1.5 0 010 3z" fill="currentColor"></path></svg>
+            WRAL Azalea Gardens, 4601 Beryl Rd, Raleigh
+          </div>
+        <button class="btn-delete-item" title="Delete item">×</button></div>
+        <div class="tl-item" style="transition: opacity 0.25s, transform 0.25s;"><div class="drag-handle" title="Drag to reorder">⠿</div>
+    <div class="tl-row">
+      <span class="tl-time">1:15 PM</span>
+      <span class="tl-event">Call Sola Coffee</span>
+      <span class="tl-who">Tori &amp; Jared</span>
+    </div>
+    <div class="tl-details">Tori &amp; Jared to call Sola to place the Saturday morning order. <strong>All bridesmaids, groomsmen, and anyone getting ready at the Airbnb</strong> — please submit your coffee &amp; food order using the link below before 1:00 PM on Friday.</div>
+    <div>
+      <a href="https://www.solacoffee.com/menupage" target="_blank" rel="noopener" class="tl-link link-sage">☕ View Sola Menu</a>
+      <a href="https://docs.google.com/spreadsheets/d/1vbZ2TafyK1EDqw2-gysBvKb3HWgOyzbiLQrAots-4aQ/edit?gid=0#gid=0" target="_blank" rel="noopener" class="tl-link link-gold">📋 Submit Your Order</a>
+    </div>
+  <button class="btn-delete-item" title="Delete item">×</button></div>
+        <div class="tl-item" style="transition: opacity 0.25s, transform 0.25s;"><div class="drag-handle" title="Drag to reorder">⠿</div>
+    <div class="tl-row">
+      <span class="tl-time">1:30-4:00 PM</span>
+      <span class="tl-event">Zinc House Hangout - Optional</span>
+      <span class="tl-who">All who would like to hang</span>
+    </div>
+    <div class="tl-location">
+      <svg width="10" height="13" viewBox="0 0 10 13" fill="none"><path d="M5 0C2.24 0 0 2.24 0 5c0 3.75 5 8 5 8s5-4.25 5-8c0-2.76-2.24-5-5-5zm0 6.5a1.5 1.5 0 110-3 1.5 1.5 0 010 3z" fill="currentColor"></path></svg>
+      Zinc House, 6225 Wake Forest Hwy, Durham, NC 27703
+    </div>
+  <button class="btn-delete-item" title="Delete item">×</button></div>
+        <div class="tl-item" style="transition: opacity 0.25s, transform 0.25s;"><div class="drag-handle" title="Drag to reorder">⠿</div>
+    <div class="tl-row">
+      <span class="tl-time">TBD</span>
+      <span class="tl-event">Pick Up Wegmans Subs</span>
+      <span class="tl-who">Tori &amp; Jared</span>
+    </div>
+    <div class="tl-details">For the welcome party at Bowstring Brewing</div>
+  <button class="btn-delete-item" title="Delete item">×</button></div>
+      </div><button class="btn-add-item">+ Add Schedule Item</button>
+    </div>
+
+    <div class="schedule-group">
+      <div class="group-title"><span>Welcome Party</span></div>
+      <div class="timeline">
+        <div class="tl-item highlight"><div class="drag-handle" title="Drag to reorder">⠿</div>
+          <div class="tl-row">
+            <span class="tl-time">6:30 PM</span>
+            <span class="tl-event">Welcome Party Begins</span>
+            <span class="tl-who">All guests</span>
+          </div>
+          <div class="tl-location">
+            <svg width="10" height="13" viewBox="0 0 10 13" fill="none"><path d="M5 0C2.24 0 0 2.24 0 5c0 3.75 5 8 5 8s5-4.25 5-8c0-2.76-2.24-5-5-5zm0 6.5a1.5 1.5 0 110-3 1.5 1.5 0 010 3z" fill="currentColor"></path></svg>
+            Bowstring Brewing, 1930 Wake Forest Rd, Raleigh, NC 27608
+          </div>
+          <div class="tl-details" style="margin-top:8px; color: var(--warm-brown); font-style:italic;">
+            Casual attire — come ready to relax and enjoy the evening!
+          </div>
+        <button class="btn-delete-item" title="Delete item">×</button></div>
+        <div class="tl-item"><div class="drag-handle" title="Drag to reorder">⠿</div>
+          <div class="tl-row">
+            <span class="tl-time">9:30 PM</span>
+            <span class="tl-event">Welcome Party Concludes</span>
+          </div>
+        <button class="btn-delete-item" title="Delete item">×</button></div>
+      </div><button class="btn-add-item">+ Add Schedule Item</button>
+    </div>
+
+  </section>
+
+  <!-- ── SATURDAY ── -->
+  <section id="tab-sat" class="day-section">
+    <div class="day-header">
+      <h2>Saturday, May 2</h2>
+      <span class="day-badge">Wedding Day 🌿</span>
+    </div>
+
+    <!-- MORNING -->
+    <div class="schedule-group">
+      <div class="group-title"><span>Morning — Getting Ready</span></div>
+
+      <div class="sola-callout">
+        <div class="sc-icon">☕</div>
+        <div class="sc-body">
+          <div class="sc-heading">Submit Your Sola Coffee Order</div>
+          <div class="sc-who">Bridal Party &amp; Everyone Getting Ready at the Airbnb</div>
+          <div class="sc-text">Jared, Ben, and Bryan are doing a Sola Coffee run at 7:00 AM. Submit your coffee and food order <strong>before 1:00 PM on Friday</strong>, so nothing gets missed!</div>
+          <div class="sc-links">
+            <a href="https://www.solacoffee.com/menupage" target="_blank" rel="noopener" class="tl-link link-sage">☕ View Sola Menu</a>
+            <a href="https://docs.google.com/spreadsheets/d/1vbZ2TafyK1EDqw2-gysBvKb3HWgOyzbiLQrAots-4aQ/edit?gid=0#gid=0" target="_blank" rel="noopener" class="tl-link link-gold">📋 Submit Your Order</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="timeline">
+        <div class="tl-item"><div class="drag-handle" title="Drag to reorder">⠿</div>
+          <div class="tl-row">
+            <span class="tl-time">7:00 AM</span>
+            <span class="tl-event">Pick Up Breakfast &amp; Coffee</span>
+            <span class="tl-who">Ben, Bryan, Jared, Isaiah</span>
+          </div>
+          <div class="tl-details">Sola Coffee — bring back to the Airbnb</div>
+        <button class="btn-delete-item" title="Delete item">×</button></div>
+        <div class="tl-item"><div class="drag-handle" title="Drag to reorder">⠿</div>
+          <div class="tl-row">
+            <span class="tl-time">7:30 AM</span>
+            <span class="tl-event">Bridesmaids Arrive at Airbnb</span>
+            <span class="tl-who">Bridesmaids + Tori</span>
+          </div>
+        <button class="btn-delete-item" title="Delete item">×</button></div>
+        <div class="tl-item"><div class="drag-handle" title="Drag to reorder">⠿</div>
+          <div class="tl-row">
+            <span class="tl-time">8:00 AM</span>
+            <span class="tl-event">Makeup Artist &amp; Hair Dresser Arrive</span>
+            <span class="tl-who">Bridesmaids + Tori</span>
+          </div>
+          <div class="tl-details">At the Airbnb — hair &amp; makeup begins</div>
+        <button class="btn-delete-item" title="Delete item">×</button></div>
+        <div class="tl-item"><div class="drag-handle" title="Drag to reorder">⠿</div>
+          <div class="tl-row">
+            <span class="tl-time">8:30–9:00 AM</span>
+            <span class="tl-event">Groomsmen Arrive at Airbnb</span>
+            <span class="tl-who">Groomsmen</span>
+          </div>
+        <button class="btn-delete-item" title="Delete item">×</button></div>
+        <div class="tl-item highlight"><div class="drag-handle" title="Drag to reorder">⠿</div>
+          <div class="tl-row">
+            <span class="tl-time">8:20 AM–1:00 PM</span>
+            <span class="tl-event">Hair + Makeup</span>
+            <span class="tl-who">Bridesmaids + Tori</span>
+          </div>
+          <div class="tl-details">All girls must be ready by 1:00 PM — photographer arrives at 1:00 PM</div>
+        <button class="btn-delete-item" title="Delete item">×</button></div>
+        <div class="tl-item"><div class="drag-handle" title="Drag to reorder">⠿</div>
+          <div class="tl-row">
+            <span class="tl-time">12:00 PM</span>
+            <span class="tl-event">Groomsmen Go to Second Empire</span>
+            <span class="tl-who">Groomsmen</span>
+          </div>
+          <div class="tl-details">Set up and prepare the reception room</div>
+        <button class="btn-delete-item" title="Delete item">×</button></div>
+        <div class="tl-item highlight"><div class="drag-handle" title="Drag to reorder">⠿</div>
+          <div class="tl-row">
+            <span class="tl-time">1:00 PM</span>
+            <span class="tl-event">Photographer Arrives — 8 Hours Begins</span>
+          </div>
+          <div class="tl-details">Naomi Turner · 252-940-3909 · At the Airbnb</div>
+        <button class="btn-delete-item" title="Delete item">×</button></div>
+        <div class="tl-item"><div class="drag-handle" title="Drag to reorder">⠿</div>
+          <div class="tl-row">
+            <span class="tl-time">1:00 PM</span>
+            <span class="tl-event">Photos — Getting Ready</span>
+          </div>
+          <div class="tl-details">Getting ready photos, Mom + Bride, Bride + Dad, Groom + Dad, Groom + Mom</div>
+        <button class="btn-delete-item" title="Delete item">×</button></div>
+        <div class="tl-item highlight"><div class="drag-handle" title="Drag to reorder">⠿</div>
+          <div class="tl-row">
+            <span class="tl-time">2:45 PM</span>
+            <span class="tl-event">Depart Airbnb for WRAL Gardens</span>
+            <span class="tl-who">Wedding party</span>
+          </div>
+          <div class="tl-details">⚠️ Must leave by 2:45 PM to arrive on time</div>
+        <button class="btn-delete-item" title="Delete item">×</button></div>
+      </div><button class="btn-add-item">+ Add Schedule Item</button>
+    </div>
+
+    <!-- CEREMONY -->
+    <div class="schedule-group">
+      <div class="group-title"><span>The Ceremony</span></div>
+      <div class="timeline">
+        <div class="tl-item"><div class="drag-handle" title="Drag to reorder">⠿</div>
+          <div class="tl-row">
+            <span class="tl-time">3:15 PM</span>
+            <span class="tl-event">Wedding Party Arrives at Gardens</span>
+            <span class="tl-who">Wedding party</span>
+          </div>
+          <div class="tl-location">
+            <svg width="10" height="13" viewBox="0 0 10 13" fill="none"><path d="M5 0C2.24 0 0 2.24 0 5c0 3.75 5 8 5 8s5-4.25 5-8c0-2.76-2.24-5-5-5zm0 6.5a1.5 1.5 0 110-3 1.5 1.5 0 010 3z" fill="currentColor"></path></svg>
+            WRAL Azalea Gardens, 4601 Beryl Rd
+          </div>
+        <button class="btn-delete-item" title="Delete item">×</button></div>
+        <div class="tl-item"><div class="drag-handle" title="Drag to reorder">⠿</div>
+          <div class="tl-row">
+            <span class="tl-time">3:15–4:40 PM</span>
+            <span class="tl-event">Pre-Ceremony Photos</span>
+            <span class="tl-who">Wedding party</span>
+          </div>
+          <div class="tl-details">First look, vows, and bridal party photos at WRAL Garden</div>
+        <button class="btn-delete-item" title="Delete item">×</button></div>
+        <div class="tl-item"><div class="drag-handle" title="Drag to reorder">⠿</div>
+          <div class="tl-row">
+            <span class="tl-time">3:30 PM</span>
+            <span class="tl-event">WRAL Gardens Reserved — Garden Ceremony Area Access Begins</span>
+          </div>
+          <div class="tl-details">Reserved 3:30 PM – 6:00 PM</div>
+        <button class="btn-delete-item" title="Delete item">×</button></div>
+        <div class="tl-item"><div class="drag-handle" title="Drag to reorder">⠿</div>
+          <div class="tl-row">
+            <span class="tl-time">3:45 PM</span>
+            <span class="tl-event">Trolley Pick-Up Begins</span>
+          </div>
+          <div class="tl-details">Trolley transports guests to WRAL Gardens from Second Empire · Rental: 3:45–7:45 PM</div>
+        <button class="btn-delete-item" title="Delete item">×</button></div>
+        <div class="tl-item"><div class="drag-handle" title="Drag to reorder">⠿</div>
+          <div class="tl-row">
+            <span class="tl-time">~4:00 PM</span>
+            <span class="tl-event">First Guests Arrive at Gardens</span>
+          </div>
+        <button class="btn-delete-item" title="Delete item">×</button></div>
+        <div class="tl-item"><div class="drag-handle" title="Drag to reorder">⠿</div>
+          <div class="tl-row">
+            <span class="tl-time">4:40–5:00 PM</span>
+            <span class="tl-event">Guests Take Seats — Ceremony Prep</span>
+          </div>
+          <div class="tl-details">Please be seated by 4:45 PM</div>
+        <button class="btn-delete-item" title="Delete item">×</button></div>
+        <div class="tl-item highlight"><div class="drag-handle" title="Drag to reorder">⠿</div>
+          <div class="tl-row">
+            <span class="tl-time">5:00 PM</span>
+            <span class="tl-event">✦ Wedding Ceremony ✦</span>
+            <span class="tl-who">All guests</span>
+          </div>
+          <div class="tl-location">
+            <svg width="10" height="13" viewBox="0 0 10 13" fill="none"><path d="M5 0C2.24 0 0 2.24 0 5c0 3.75 5 8 5 8s5-4.25 5-8c0-2.76-2.24-5-5-5zm0 6.5a1.5 1.5 0 110-3 1.5 1.5 0 010 3z" fill="currentColor"></path></svg>
+            WRAL Azalea Gardens, 4601 Beryl Rd, Raleigh
+          </div>
+        <button class="btn-delete-item" title="Delete item">×</button></div>
+        
+        <div class="tl-item" style="transition: opacity 0.25s, transform 0.25s;"><div class="drag-handle" title="Drag to reorder">⠿</div>
+    <div class="tl-row">
+      <span class="tl-time">5:20 - 6:00 PM</span>
+      <span class="tl-event">Family Photos</span>
+      <span class="tl-who">Tori &amp; Jared + Family</span>
+    </div>
+    <div class="tl-details">Immediate family photos + To</div>
+  <button class="btn-delete-item" title="Delete item">×</button></div><div class="tl-item"><div class="drag-handle" title="Drag to reorder">⠿</div>
+          <div class="tl-row">
+            <span class="tl-time">5:45 PM</span>
+            <span class="tl-event">First Trolley Departs WRAL</span>
+            <span class="tl-who">All guests + parents, not bridal party</span>
+          </div>
+          <div class="tl-details">Arrives at Second Empire ~5:55 PM</div>
+        <button class="btn-delete-item" title="Delete item">×</button></div>
+        <div class="tl-item"><div class="drag-handle" title="Drag to reorder">⠿</div>
+          <div class="tl-row">
+            <span class="tl-time">6:00 PM</span>
+            <span class="tl-event">WRAL Reservation Ends</span>
+          </div>
+          <div class="tl-details">Guests line up for trolley to Second Empire</div>
+        <button class="btn-delete-item" title="Delete item">×</button></div>
+        
+        <div class="tl-item" style="transition: opacity 0.25s, transform 0.25s;"><div class="drag-handle" title="Drag to reorder">⠿</div>
+    <div class="tl-row">
+      <span class="tl-time">6:10 PM</span>
+      <span class="tl-event">Second Trolley Departs WRAL</span>
+      <span class="tl-who">All guests, not bridal party</span>
+    </div>
+    <div class="tl-details">Arrives at Second Empire ~6:20 PM</div>
+  <button class="btn-delete-item" title="Delete item">×</button></div><div class="tl-item"><div class="drag-handle" title="Drag to reorder">⠿</div>
+          <div class="tl-row">
+            <span class="tl-time">6:30 PM</span>
+            <span class="tl-event">Final Trolley Departs WRAL</span>
+            <span class="tl-who">Bridal party + plus-ones</span>
+          </div>
+          <div class="tl-details">Arrives at Second Empire ~6:40 PM</div>
+        <button class="btn-delete-item" title="Delete item">×</button></div>
+      </div><button class="btn-add-item">+ Add Schedule Item</button>
+    </div>
+
+    <!-- RECEPTION -->
+    <div class="schedule-group">
+      <div class="group-title"><span>The Reception</span></div>
+      <div class="timeline">
+        <div class="tl-item highlight"><div class="drag-handle" title="Drag to reorder">⠿</div>
+          <div class="tl-row">
+            <span class="tl-time">6:15–7:15 PM</span>
+            <span class="tl-event">Cocktail Hour</span>
+            <span class="tl-who">All guests</span>
+          </div>
+          <div class="tl-location">
+            <svg width="10" height="13" viewBox="0 0 10 13" fill="none"><path d="M5 0C2.24 0 0 2.24 0 5c0 3.75 5 8 5 8s5-4.25 5-8c0-2.76-2.24-5-5-5zm0 6.5a1.5 1.5 0 110-3 1.5 1.5 0 010 3z" fill="currentColor"></path></svg>
+            Second Empire, 330 Hillsborough St, Raleigh
+          </div>
+        <button class="btn-delete-item" title="Delete item">×</button></div>
+        <div class="tl-item"><div class="drag-handle" title="Drag to reorder">⠿</div>
+          <div class="tl-row">
+            <span class="tl-time">7:15–7:45 PM</span>
+            <span class="tl-event">Speeches &amp; Toasts</span>
+          </div>
+        <button class="btn-delete-item" title="Delete item">×</button></div>
+        <div class="tl-item highlight"><div class="drag-handle" title="Drag to reorder">⠿</div>
+          <div class="tl-row">
+            <span class="tl-time">7:30–8:45 PM</span>
+            <span class="tl-event">Dinner &amp; Celebration</span>
+            <span class="tl-who">All guests</span>
+          </div>
+          <div class="tl-details">Enjoy dinner and drinks</div>
+        <button class="btn-delete-item" title="Delete item">×</button></div>
+        
+      <div class="tl-item" style="transition: opacity 0.25s, transform 0.25s;"><div class="drag-handle" title="Drag to reorder">⠿</div>
+    <div class="tl-row">
+      <span class="tl-time">9:10 - 9:30 PM</span>
+      <span class="tl-event">Wedding Decor/Items Pack-up</span>
+      <span class="tl-who">Jared + Groomsmen</span>
+    </div>
+    <div class="tl-details">Remove all wedding decor/items and pack the car</div>
+  <button class="btn-delete-item" title="Delete item">×</button></div></div><button class="btn-add-item">+ Add Schedule Item</button>
+    </div>
+
+    <!-- AFTER PARTY -->
+    <div class="schedule-group">
+      <div class="group-title"><span>The After Party</span></div>
+      <div class="timeline">
+        <div class="tl-item highlight"><div class="drag-handle" title="Drag to reorder">⠿</div>
+          <div class="tl-row">
+            <span class="tl-time">~9:30 PM</span>
+            <span class="tl-event">After Party Begins — Continue the Celebration!</span>
+          </div>
+          <div class="tl-details">Downtown Raleigh</div>
+        <button class="btn-delete-item" title="Delete item">×</button></div>
+        
+        
+      </div><button class="btn-add-item">+ Add Schedule Item</button>
+    </div>
+
+  </section>
+
+  <!-- ── HAIR & MAKEUP ── -->
+  <section id="tab-hm" class="day-section">
+    <div class="day-header">
+      <h2>Hair &amp; Makeup</h2>
+      <span class="day-badge">Saturday, May 2</span>
+    </div>
+
+    <div class="info-grid">
+      <div class="info-card">
+        <div class="ic-icon">💄</div>
+        <div class="ic-title">Makeup Artist</div>
+        <div class="ic-val">Dorothy</div>
+        <div class="ic-sub">Arrives 8:00 AM for setup · All done by 1:00 PM</div>
+      </div>
+      <div class="info-card">
+        <div class="ic-icon">📍</div>
+        <div class="ic-title">Location</div>
+        <div class="ic-val">The Airbnb</div>
+        <div class="ic-sub">4412 Major Loring Way, Raleigh, NC 27616</div>
+      </div>
+      <div class="info-card">
+        <div class="ic-icon">⏰</div>
+        <div class="ic-title">Hard Deadline</div>
+        <div class="ic-val">All girls ready by 1:00 PM</div>
+        <div class="ic-sub">Photographer Naomi Turner arrives at 1:00 PM sharp</div>
+      </div>
+    </div>
+
+    <div class="schedule-group">
+      <div class="group-title"><span>Detailed Schedule</span></div>
+      <div style="background:white; border:1px solid var(--sage-light); border-radius:8px; overflow:hidden;">
+        <table class="hm-table">
+          <thead>
+            <tr>
+              <th>Time</th>
+              <th>Hair</th>
+              <th>Makeup</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>8:00–8:20 AM</td>
+              <td></td>
+              <td>Dorothy (Makeup Artist) — Arrival &amp; Setup</td>
+            <td><button class="btn-delete-tr" title="Delete row">×</button></td></tr>
+            <tr>
+              <td>8:20–9:00 AM</td>
+              <td></td>
+              <td>Gaby</td>
+            <td><button class="btn-delete-tr" title="Delete row">×</button></td></tr>
+            <tr>
+              <td>9:00–9:40 AM</td>
+              <td></td>
+              <td>Lauren</td>
+            <td><button class="btn-delete-tr" title="Delete row">×</button></td></tr>
+            <tr>
+              <td>9:40–10:20 AM</td>
+              <td></td>
+              <td>Britani</td>
+            <td><button class="btn-delete-tr" title="Delete row">×</button></td></tr>
+            <tr>
+              <td>10:20–11:00 AM</td>
+              <td></td>
+              <td>Chris — Mother of the Bride</td>
+            <td><button class="btn-delete-tr" title="Delete row">×</button></td></tr>
+            <tr>
+              <td>11:00–11:40 AM</td>
+              <td></td>
+              <td>Tori</td>
+            <td><button class="btn-delete-tr" title="Delete row">×</button></td></tr>
+            <tr>
+              <td>11:40 AM–12:20 PM</td>
+              <td></td>
+              <td>Tori (continued)</td>
+            <td><button class="btn-delete-tr" title="Delete row">×</button></td></tr>
+            <tr>
+              <td>12:20–1:00 PM</td>
+              <td></td>
+              <td>Andrea</td>
+            <td><button class="btn-delete-tr" title="Delete row">×</button></td></tr>
+          </tbody>
+        </table>
+      <button class="btn-add-hmrow">+ Add Row</button></div>
+    </div>
+
+  </section>
+
+</main>
+
+<!-- ═══════════════════════════════ FOOTER ═══════════════════════════════ -->
+<footer class="footer">
+  <div class="footer-motif">Tori &amp; Jared</div>
+  <p style="font-family:'Cormorant Garamond',serif; font-style:italic; font-size:1rem; color:var(--sage); margin-bottom:8px;">May 2, 2026 · Raleigh, North Carolina</p>
+  <div style="width:50px; height:1px; background:var(--sage-light); margin:14px auto;"></div>
+  <p>WRAL Azalea Gardens &nbsp;·&nbsp; Second Empire Restaurant &amp; Tavern</p>
+</footer>
+
+<div class="edit-fab">
+  <button class="fab-btn fab-save" onclick="saveHTML()">⬇ Save File</button>
+  <button class="fab-btn fab-done" onclick="toggleEdit()">✓ Done Editing</button>
+  <button class="fab-btn fab-edit" onclick="toggleEdit()">✏️ Edit</button>
+</div>
+
+<!-- Shared snap drop-line indicator -->
+
+
+<script>
+'use strict';
+
+/* ════════════════════════════════════════════
+   TAB SWITCHING
+════════════════════════════════════════════ */
+function switchTab(id) {
+  document.querySelectorAll('.day-section').forEach(s => s.classList.remove('active'));
+  document.querySelectorAll('.tab-btn').forEach(b => {
+    b.classList.remove('active');
+    b.setAttribute('aria-selected', 'false');
+  });
+  document.getElementById('tab-' + id).classList.add('active');
+  const map = { wed: 0, thu: 1, fri: 2, sat: 3, hm: 4 };
+  const btns = document.querySelectorAll('.tab-btn');
+  btns[map[id]].classList.add('active');
+  btns[map[id]].setAttribute('aria-selected', 'true');
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+/* ════════════════════════════════════════════
+   EDITABLE FIELDS
+════════════════════════════════════════════ */
+const TEXT_FIELDS = [
+  '.hero-eyebrow', '.hero h1', '.hero-sub', '.hero-location',
+  '.vc-label', '.vc-name', '.vc-time', '.vc-addr',
+  '.tl-time', '.tl-event', '.tl-who', '.tl-details', '.tl-location',
+  '.day-header h2', '.day-header .day-badge',
+  '.group-title span',
+  '.ic-title', '.ic-val', '.ic-sub', '.ic-icon',
+  '.pb-title',
+  '.footer-motif', '.footer p',
+  '.tab-btn .tab-day',
+];
+
+function setEditable(editing) {
+  TEXT_FIELDS.forEach(sel => {
+    document.querySelectorAll(sel).forEach(el => {
+      el.contentEditable = editing ? 'true' : 'false';
+      if (editing && !el.dataset.ph) el.dataset.ph = el.textContent.trim() || 'Edit…';
+    });
+  });
+  // H&M table data cells
+  document.querySelectorAll('.hm-table td:not(:last-child)').forEach(td => {
+    td.contentEditable = editing ? 'true' : 'false';
+    if (editing && !td.dataset.ph) td.dataset.ph = td.textContent.trim() || '…';
+  });
+  // Planning notes
+  document.querySelectorAll('.planning-box li').forEach(li => {
+    li.contentEditable = editing ? 'true' : 'false';
+    const del = li.querySelector('.btn-delete-li');
+    if (del) del.contentEditable = 'false';
+  });
+}
+
+function focusEnd(el) {
+  el.focus();
+  try {
+    const r = document.createRange(), s = window.getSelection();
+    r.selectNodeContents(el); r.collapse(false);
+    s.removeAllRanges(); s.addRange(r);
+  } catch(e) {}
+}
+
+/* ════════════════════════════════════════════
+   DRAG-AND-DROP  (timeline items + venue cards)
+════════════════════════════════════════════ */
+let dragSrc = null;
+const dropLine = document.getElementById('dropLine');
+
+// Reusable: get the tl-item above/below cursor inside a timeline container
+function getDropTarget(timeline, clientY) {
+  const items = [...timeline.querySelectorAll(':scope > .tl-item')];
+  for (const item of items) {
+    const rect = item.getBoundingClientRect();
+    const mid  = rect.top + rect.height / 2;
+    if (clientY < mid) return { before: item };
+  }
+  return { before: null }; // drop at end
+}
+
+function showDropLine(referenceEl, timeline) {
+  // Position drop-line before referenceEl, or at end of timeline
+  if (referenceEl) {
+    referenceEl.parentNode.insertBefore(dropLine, referenceEl);
+  } else {
+    timeline.appendChild(dropLine);
+  }
+  dropLine.classList.add('visible');
+}
+
+function hideDropLine() {
+  dropLine.classList.remove('visible');
+  if (dropLine.parentNode) dropLine.parentNode.removeChild(dropLine);
+}
+
+function makeDraggable(item) {
+  item.setAttribute('draggable', 'true');
+
+  item.addEventListener('dragstart', e => {
+    dragSrc = item;
+    item.classList.add('is-dragging');
+    e.dataTransfer.effectAllowed = 'move';
+    e.dataTransfer.setData('text/plain', ''); // required for Firefox
+  });
+
+  item.addEventListener('dragend', () => {
+    item.classList.remove('is-dragging');
+    hideDropLine();
+    dragSrc = null;
+  });
+}
+
+function makeTimelineDropZone(timeline) {
+  timeline.addEventListener('dragover', e => {
+    if (!dragSrc || !dragSrc.classList.contains('tl-item')) return;
+    e.preventDefault();
+    e.dataTransfer.dropEffect = 'move';
+    const { before } = getDropTarget(timeline, e.clientY);
+    showDropLine(before, timeline);
+  });
+
+  timeline.addEventListener('dragleave', e => {
+    if (!timeline.contains(e.relatedTarget)) hideDropLine();
+  });
+
+  timeline.addEventListener('drop', e => {
+    e.preventDefault();
+    if (!dragSrc || !dragSrc.classList.contains('tl-item')) return;
+    const { before } = getDropTarget(timeline, e.clientY);
+    if (before) {
+      timeline.insertBefore(dragSrc, before);
+    } else {
+      timeline.appendChild(dragSrc);
+    }
+    hideDropLine();
+  });
+}
+
+/* Venue-card drag (reorder in overview grid) */
+let dragVenue = null;
+
+function makeVenueDraggable(card) {
+  card.setAttribute('draggable', 'true');
+
+  card.addEventListener('dragstart', e => {
+    dragVenue = card;
+    card.classList.add('is-dragging');
+    e.dataTransfer.effectAllowed = 'move';
+    e.dataTransfer.setData('text/plain', '');
+  });
+
+  card.addEventListener('dragend', () => {
+    card.classList.remove('is-dragging');
+    document.querySelectorAll('.venue-card').forEach(c => c.classList.remove('drop-target-before'));
+    dragVenue = null;
+  });
+
+  card.addEventListener('dragover', e => {
+    if (!dragVenue || dragVenue === card) return;
+    e.preventDefault();
+    document.querySelectorAll('.venue-card').forEach(c => c.classList.remove('drop-target-before'));
+    card.classList.add('drop-target-before');
+  });
+
+  card.addEventListener('drop', e => {
+    e.preventDefault();
+    if (!dragVenue || dragVenue === card) return;
+    card.parentNode.insertBefore(dragVenue, card);
+    document.querySelectorAll('.venue-card').forEach(c => c.classList.remove('drop-target-before'));
+  });
+}
+
+/* ════════════════════════════════════════════
+   BUILD EDIT CONTROLS (runs once on load)
+════════════════════════════════════════════ */
+document.addEventListener('DOMContentLoaded', () => {
+
+  /* ── Timeline items: drag handle + delete ── */
+  document.querySelectorAll('.tl-item').forEach(item => initTlItem(item));
+
+  /* ── Timeline zones ── */
+  document.querySelectorAll('.timeline').forEach(tl => {
+    makeTimelineDropZone(tl);
+    // + Add Item button
+    const btn = document.createElement('button');
+    btn.className = 'btn-add-item';
+    btn.textContent = '+ Add Schedule Item';
+    btn.onclick = () => addTimelineItem(tl);
+    tl.parentNode.insertBefore(btn, tl.nextSibling);
+  });
+
+  /* ── Venue cards ── */
+  document.querySelectorAll('.venue-card').forEach(card => initVenueCard(card));
+
+  // + Add Venue button
+  const overviewInner = document.querySelector('.overview-inner');
+  if (overviewInner) {
+    const addVenueBtn = document.createElement('button');
+    addVenueBtn.className = 'btn-add-venue';
+    addVenueBtn.textContent = '+ Add Venue';
+    addVenueBtn.onclick = () => {
+      const card = makeVenueCard({ label:'Event', name:'Venue Name', time:'Date & Time', addr:'Address' });
+      overviewInner.insertBefore(card, addVenueBtn);
+      if (document.body.classList.contains('editing')) {
+        card.querySelectorAll('.vc-label,.vc-name,.vc-time,.vc-addr').forEach(el => {
+          el.contentEditable = 'true';
+          el.dataset.ph = el.textContent.trim();
+        });
+        makeDraggable(card);
+        focusEnd(card.querySelector('.vc-name'));
+      }
+    };
+    overviewInner.appendChild(addVenueBtn);
+  }
+
+  /* ── Planning notes ── */
+  document.querySelectorAll('.planning-box ul').forEach(ul => {
+    ul.querySelectorAll('li').forEach(li => addDeleteLi(li));
+    const addBtn = document.createElement('button');
+    addBtn.className = 'btn-add-note';
+    addBtn.textContent = '+ Add Note';
+    addBtn.onclick = () => {
+      const li = document.createElement('li');
+      li.textContent = 'New note';
+      addDeleteLi(li);
+      ul.appendChild(li);
+      if (document.body.classList.contains('editing')) {
+        li.contentEditable = 'true';
+        const del = li.querySelector('.btn-delete-li');
+        if (del) del.contentEditable = 'false';
+      }
+      focusEnd(li);
+    };
+    ul.parentNode.appendChild(addBtn);
+  });
+
+  /* ── Hair & Makeup table ── */
+  const hmTbody = document.querySelector('.hm-table tbody');
+  if (hmTbody) {
+    hmTbody.querySelectorAll('tr').forEach(tr => addDeleteTr(tr));
+    const addBtn = document.createElement('button');
+    addBtn.className = 'btn-add-hmrow';
+    addBtn.textContent = '+ Add Row';
+    addBtn.onclick = () => {
+      const tr = document.createElement('tr');
+      tr.innerHTML = '<td></td><td></td><td></td>';
+      addDeleteTr(tr);
+      hmTbody.appendChild(tr);
+      if (document.body.classList.contains('editing')) {
+        tr.querySelectorAll('td:not(:last-child)').forEach(td => {
+          td.contentEditable = 'true';
+          td.dataset.ph = 'Edit…';
+        });
+        focusEnd(tr.querySelector('td'));
+      }
+    };
+    hmTbody.parentNode.parentNode.appendChild(addBtn);
+  }
+});
+
+/* ── Helper: fully init a tl-item ── */
+function initTlItem(item) {
+  // Drag handle
+  const handle = document.createElement('div');
+  handle.className = 'drag-handle';
+  handle.innerHTML = '⠿';
+  handle.title = 'Drag to reorder';
+  item.insertBefore(handle, item.firstChild);
+
+  // Make draggable via the handle
+  handle.addEventListener('mousedown', () => item.setAttribute('draggable', 'true'));
+  handle.addEventListener('mouseup',   () => item.setAttribute('draggable', 'false'));
+  item.setAttribute('draggable', 'false'); // only drag via handle
+
+  item.addEventListener('dragstart', e => {
+    if (!item.getAttribute('draggable') || item.getAttribute('draggable') === 'false') {
+      e.preventDefault(); return;
+    }
+    dragSrc = item;
+    item.classList.add('is-dragging');
+    e.dataTransfer.effectAllowed = 'move';
+    e.dataTransfer.setData('text/plain', '');
+  });
+
+  item.addEventListener('dragend', () => {
+    item.classList.remove('is-dragging');
+    item.setAttribute('draggable', 'false');
+    hideDropLine();
+    dragSrc = null;
+  });
+
+  // Delete button
+  const delBtn = document.createElement('button');
+  delBtn.className = 'btn-delete-item';
+  delBtn.title = 'Delete item';
+  delBtn.textContent = '×';
+  delBtn.onclick = () => {
+    item.style.transition = 'opacity 0.2s, transform 0.2s';
+    item.style.opacity = '0';
+    item.style.transform = 'translateX(8px)';
+    setTimeout(() => item.remove(), 200);
+  };
+  item.appendChild(delBtn);
+}
+
+/* ── Helper: add timeline item ── */
+function addTimelineItem(tl) {
+  const item = document.createElement('div');
+  item.className = 'tl-item';
+  item.innerHTML = `
+    <div class="tl-row">
+      <span class="tl-time">Time</span>
+      <span class="tl-event">Event name</span>
+      <span class="tl-who">Who</span>
+    </div>
+    <div class="tl-details">Details / location</div>
+  `;
+  initTlItem(item);
+  // In edit mode, enable fields immediately
+  if (document.body.classList.contains('editing')) {
+    item.querySelectorAll('.tl-time,.tl-event,.tl-who,.tl-details').forEach(el => {
+      el.contentEditable = 'true';
+      el.dataset.ph = el.textContent.trim();
+    });
+    makeTimelineDropZone(tl);
+  }
+  tl.appendChild(item);
+  focusEnd(item.querySelector('.tl-time'));
+  item.style.opacity = '0'; item.style.transform = 'translateY(6px)';
+  item.style.transition = 'opacity 0.25s, transform 0.25s';
+  requestAnimationFrame(() => { item.style.opacity = ''; item.style.transform = ''; });
+}
+
+/* ── Helper: init venue card ── */
+function initVenueCard(card) {
+  const delBtn = document.createElement('button');
+  delBtn.className = 'btn-delete-card';
+  delBtn.title = 'Delete venue';
+  delBtn.textContent = '×';
+  delBtn.onclick = () => {
+    card.style.transition = 'opacity 0.2s, transform 0.2s';
+    card.style.opacity = '0'; card.style.transform = 'scale(0.95)';
+    setTimeout(() => card.remove(), 200);
+  };
+  card.appendChild(delBtn);
+  makeVenueDraggable(card);
+}
+
+/* ── Helper: build a new venue card element ── */
+function makeVenueCard({ label, name, time, addr }) {
+  const card = document.createElement('div');
+  card.className = 'venue-card';
+  card.innerHTML = `
+    <div class="vc-label">${label}</div>
+    <div class="vc-name">${name}</div>
+    <div class="vc-time">${time}</div>
+    <div class="vc-addr">${addr}</div>
+  `;
+  initVenueCard(card);
+  return card;
+}
+
+/* ── Helper: delete button for planning li ── */
+function addDeleteLi(li) {
+  const btn = document.createElement('button');
+  btn.className = 'btn-delete-li';
+  btn.title = 'Delete note';
+  btn.textContent = '×';
+  btn.onclick = () => li.remove();
+  li.appendChild(btn);
+}
+
+/* ── Helper: delete button for H&M table row ── */
+function addDeleteTr(tr) {
+  const td = document.createElement('td');
+  const btn = document.createElement('button');
+  btn.className = 'btn-delete-tr';
+  btn.title = 'Delete row';
+  btn.textContent = '×';
+  btn.onclick = () => tr.remove();
+  td.appendChild(btn);
+  tr.appendChild(td);
+}
+
+/* ════════════════════════════════════════════
+   TOGGLE EDIT MODE
+════════════════════════════════════════════ */
+function toggleEdit() {
+  const editing = document.body.classList.toggle('editing');
+  setEditable(editing);
+
+  if (editing) {
+    // Enable dragging on all timelines
+    document.querySelectorAll('.timeline').forEach(makeTimelineDropZone);
+    // Enable venue card dragging
+    document.querySelectorAll('.venue-card').forEach(card => {
+      card.setAttribute('draggable', 'true');
+    });
+  } else {
+    document.querySelectorAll('.venue-card').forEach(card => {
+      card.setAttribute('draggable', 'false');
+    });
+    hideDropLine();
+  }
+}
+
+/* ════════════════════════════════════════════
+   SAVE FILE
+════════════════════════════════════════════ */
+function saveHTML() {
+  const clone = document.documentElement.cloneNode(true);
+
+  // Remove editing class
+  clone.classList.remove('editing');
+  clone.querySelector('body') && clone.querySelector('body').classList.remove('editing');
+
+  // Strip contenteditable & data-ph
+  clone.querySelectorAll('[contenteditable]').forEach(el => el.removeAttribute('contenteditable'));
+  clone.querySelectorAll('[data-ph]').forEach(el => el.removeAttribute('data-ph'));
+
+  // Remove stray drop-line
+  clone.querySelectorAll('#dropLine').forEach(el => el.remove());
+
+  // Reset draggable
+  clone.querySelectorAll('[draggable]').forEach(el => el.removeAttribute('draggable'));
+
+  const html = '<!DOCTYPE html>\n' + clone.outerHTML;
+  const blob = new Blob([html], { type: 'text/html' });
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = 'wedding_schedule.html';
+  a.click();
+  URL.revokeObjectURL(a.href);
+}
+</script>
+
+
+
+</body></html>
