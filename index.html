@@ -170,8 +170,18 @@
     .venue-card .vc-addr {
       font-size: 0.72rem;
       color: var(--text-light);
-      margin-top: 4px;
+      margin-top: 6px;
       line-height: 1.4;
+    }
+    .venue-card .vc-addr::before {
+      content: 'Address';
+      display: block;
+      font-size: 0.6rem;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--sage-dark);
+      margin-bottom: 2px;
     }
 
     /* ── TABS ── */
@@ -1114,37 +1124,37 @@
       <div class="vc-label">Getting Ready</div>
       <div class="vc-name">The Airbnb</div>
       <div class="vc-time">Saturday, May 2 — Morning</div>
-      <div class="vc-addr">4412 Major Loring Way, Raleigh, NC 27616</div><button class="btn-delete-card" title="Delete venue">×</button></div>
+      <div class="vc-addr">4412 Major Loring Way, Raleigh, NC 27616</div><button class="btn-delete-card" title="Delete venue">×</button><button class="btn-delete-card" title="Delete venue">×</button></div>
     <div class="venue-card">
       <div class="vc-label">Rehearsal</div>
       <div class="vc-name">WRAL Azalea Gardens</div>
       <div class="vc-time">Friday, May 1 — 12:00–1:00 PM</div>
-      <div class="vc-addr">4601 Beryl Road, Raleigh, NC</div><button class="btn-delete-card" title="Delete venue">×</button></div>
+      <div class="vc-addr">4601 Beryl Road, Raleigh, NC</div><button class="btn-delete-card" title="Delete venue">×</button><button class="btn-delete-card" title="Delete venue">×</button></div>
     <div class="venue-card">
       <div class="vc-label">Welcome Party</div>
       <div class="vc-name">Bowstring Brewing</div>
       <div class="vc-time">Friday, May 1 — 6:30–9:30 PM</div>
-      <div class="vc-addr">1930 Wake Forest Rd, Raleigh, NC 27608</div><button class="btn-delete-card" title="Delete venue">×</button></div>
+      <div class="vc-addr">1930 Wake Forest Rd, Raleigh, NC 27608</div><button class="btn-delete-card" title="Delete venue">×</button><button class="btn-delete-card" title="Delete venue">×</button></div>
     <div class="venue-card">
       <div class="vc-label">Ceremony</div>
       <div class="vc-name">WRAL Azalea Gardens</div>
       <div class="vc-time">Saturday, May 2 — 5:00 PM</div>
-      <div class="vc-addr">4601 Beryl Road, Raleigh, NC</div><button class="btn-delete-card" title="Delete venue">×</button></div>
+      <div class="vc-addr">4601 Beryl Road, Raleigh, NC</div><button class="btn-delete-card" title="Delete venue">×</button><button class="btn-delete-card" title="Delete venue">×</button></div>
     <div class="venue-card">
       <div class="vc-label">Reception</div>
       <div class="vc-name">Second Empire</div>
       <div class="vc-time">Saturday, May 2 — 6:15 PM</div>
-      <div class="vc-addr">330 Hillsborough St, Raleigh, NC</div><button class="btn-delete-card" title="Delete venue">×</button></div>
+      <div class="vc-addr">330 Hillsborough St, Raleigh, NC</div><button class="btn-delete-card" title="Delete venue">×</button><button class="btn-delete-card" title="Delete venue">×</button></div>
     <div class="venue-card">
       <div class="vc-label">After Party</div>
       <div class="vc-name">Downtown Raleigh</div>
       <div class="vc-time">Saturday, May 2 — ~9:00 PM</div>
-      <div class="vc-addr">The Moon Room / Boxcar Bar + Arcade</div><button class="btn-delete-card" title="Delete venue">×</button></div>
+      <div class="vc-addr">The Moon Room / Boxcar Bar + Arcade</div><button class="btn-delete-card" title="Delete venue">×</button><button class="btn-delete-card" title="Delete venue">×</button></div>
   <div class="venue-card">
     <div class="vc-label">Optional Hangout</div>
     <div class="vc-name">Zinc House</div>
     <div class="vc-time">Friday, May 2 - 1:30 -4:00 PM</div>
-    <div class="vc-addr">6225 Wake Forest Hwy, Durham, NC 27703</div><button class="btn-delete-card" title="Delete venue">×</button></div><button class="btn-add-venue">+ Add Venue</button></div>
+    <div class="vc-addr">6225 Wake Forest Hwy, Durham, NC 27703</div><button class="btn-delete-card" title="Delete venue">×</button><button class="btn-delete-card" title="Delete venue">×</button></div><button class="btn-add-venue">+ Add Venue</button><button class="btn-add-venue">+ Add Venue</button></div>
 </section>
 
 <!-- ═══════════════════════════════ TABS ═══════════════════════════════ -->
@@ -1159,10 +1169,10 @@
     <button class="tab-btn" onclick="switchTab('fri')" role="tab" aria-selected="false">
       <span class="tab-day">Friday</span>May 1
     </button>
-    <button class="tab-btn active" onclick="switchTab('sat')" role="tab" aria-selected="true">
+    <button class="tab-btn" onclick="switchTab('sat')" role="tab" aria-selected="false">
       <span class="tab-day">Saturday</span>May 2 — Wedding Day
     </button>
-    <button class="tab-btn" onclick="switchTab('hm')" role="tab" aria-selected="false">
+    <button class="tab-btn active" onclick="switchTab('hm')" role="tab" aria-selected="true">
       <span class="tab-day">Hair &amp; Makeup</span>Schedule
     </button>
   </div>
@@ -1196,47 +1206,47 @@
     <div class="schedule-group">
       <div class="group-title"><span>Schedule</span></div>
       <div class="timeline">
-        <div class="tl-item"><div class="drag-handle" title="Drag to reorder">⠿</div>
+        <div class="tl-item"><div class="drag-handle" title="Drag to reorder">⠿</div><div class="drag-handle" title="Drag to reorder">⠿</div>
           <div class="tl-row">
             <span class="tl-time">9:00 AM</span>
             <span class="tl-event">Trader Joe's — Look at Flowers</span>
             <span class="tl-who">Tori + Jared</span>
           </div>
-          <div class="tl-details">Browse flower options for bouquet-making</div><button class="btn-delete-item" title="Delete item">×</button></div>
-        <div class="tl-item"><div class="drag-handle" title="Drag to reorder">⠿</div>
+          <div class="tl-details">Browse flower options for bouquet-making</div><button class="btn-delete-item" title="Delete item">×</button><button class="btn-delete-item" title="Delete item">×</button></div>
+        <div class="tl-item"><div class="drag-handle" title="Drag to reorder">⠿</div><div class="drag-handle" title="Drag to reorder">⠿</div>
           <div class="tl-row">
             <span class="tl-time">TBD</span>
             <span class="tl-event">Nails</span>
             <span class="tl-who">Tori + Lauren</span>
-          </div><button class="btn-delete-item" title="Delete item">×</button></div>
-        <div class="tl-item"><div class="drag-handle" title="Drag to reorder">⠿</div>
+          </div><button class="btn-delete-item" title="Delete item">×</button><button class="btn-delete-item" title="Delete item">×</button></div>
+        <div class="tl-item"><div class="drag-handle" title="Drag to reorder">⠿</div><div class="drag-handle" title="Drag to reorder">⠿</div>
           <div class="tl-row">
             <span class="tl-time">TBD</span>
             <span class="tl-event">Chris and Bob Arrive</span>
           </div>
-          <div class="tl-details">Arrival time to be confirmed</div><button class="btn-delete-item" title="Delete item">×</button></div>
-        <div class="tl-item"><div class="drag-handle" title="Drag to reorder">⠿</div>
+          <div class="tl-details">Arrival time to be confirmed</div><button class="btn-delete-item" title="Delete item">×</button><button class="btn-delete-item" title="Delete item">×</button></div>
+        <div class="tl-item"><div class="drag-handle" title="Drag to reorder">⠿</div><div class="drag-handle" title="Drag to reorder">⠿</div>
           <div class="tl-row">
             <span class="tl-time">After 3:00 PM</span>
             <span class="tl-event">Terri and Howie Arrive, Hotel Check-in</span>
             <span class="tl-who">Tori, Howie, Terri, Chris, Bob</span>
           </div>
-          <div class="tl-details">Hotel check-in available after 3:00 PM</div><button class="btn-delete-item" title="Delete item">×</button></div>
-        <div class="tl-item"><div class="drag-handle" title="Drag to reorder">⠿</div>
+          <div class="tl-details">Hotel check-in available after 3:00 PM</div><button class="btn-delete-item" title="Delete item">×</button><button class="btn-delete-item" title="Delete item">×</button></div>
+        <div class="tl-item"><div class="drag-handle" title="Drag to reorder">⠿</div><div class="drag-handle" title="Drag to reorder">⠿</div>
     <div class="tl-row">
       <span class="tl-time">5:00 PM</span>
       <span class="tl-event">Bryan &amp; Gaby Arrive</span>
       <span class="tl-who">Bryan, Gaby, Tori, Jared</span>
     </div>
-    <div class="tl-details">RDU Airport Pick up</div><button class="btn-delete-item" title="Delete item">×</button></div>
-        <div class="tl-item"><div class="drag-handle" title="Drag to reorder">⠿</div>
+    <div class="tl-details">RDU Airport Pick up</div><button class="btn-delete-item" title="Delete item">×</button><button class="btn-delete-item" title="Delete item">×</button></div>
+        <div class="tl-item"><div class="drag-handle" title="Drag to reorder">⠿</div><div class="drag-handle" title="Drag to reorder">⠿</div>
     <div class="tl-row">
       <span class="tl-time">11:30 PM</span>
       <span class="tl-event">Ben Arrives</span>
       <span class="tl-who">Ben, Tori, Jared</span>
     </div>
-    <div class="tl-details">RDU Airport Pick up</div><button class="btn-delete-item" title="Delete item">×</button></div>
-      </div><button class="btn-add-item">+ Add Schedule Item</button>
+    <div class="tl-details">RDU Airport Pick up</div><button class="btn-delete-item" title="Delete item">×</button><button class="btn-delete-item" title="Delete item">×</button></div>
+      </div><button class="btn-add-item">+ Add Schedule Item</button><button class="btn-add-item">+ Add Schedule Item</button>
     </div>
 
   </section>
@@ -1252,35 +1262,35 @@
       <div class="group-title"><span>Schedule</span></div>
       <div class="timeline">
         
-        <div class="tl-item"><div class="drag-handle" title="Drag to reorder">⠿</div>
+        <div class="tl-item"><div class="drag-handle" title="Drag to reorder">⠿</div><div class="drag-handle" title="Drag to reorder">⠿</div>
     <div class="tl-row">
       <span class="tl-time">9:00 AM</span>
       <span class="tl-event">Pick Up Flowers</span>
       <span class="tl-who">Tori &amp; Jared</span>
     </div>
-    <div class="tl-details">Trader Joe's</div><button class="btn-delete-item" title="Delete item">×</button></div>
-        <div class="tl-item highlight"><div class="drag-handle" title="Drag to reorder">⠿</div>
+    <div class="tl-details">Trader Joe's</div><button class="btn-delete-item" title="Delete item">×</button><button class="btn-delete-item" title="Delete item">×</button></div>
+        <div class="tl-item highlight"><div class="drag-handle" title="Drag to reorder">⠿</div><div class="drag-handle" title="Drag to reorder">⠿</div>
           <div class="tl-row">
             <span class="tl-time">Morning</span>
             <span class="tl-event">Make Bouquets</span>
             <span class="tl-who">Aunt Terri, Chris, Jared, Tori</span>
           </div>
-          <div class="tl-details">Flower arranging day @ Tori &amp; Jared's</div><button class="btn-delete-item" title="Delete item">×</button></div>
-        <div class="tl-item"><div class="drag-handle" title="Drag to reorder">⠿</div>
+          <div class="tl-details">Flower arranging day @ Tori &amp; Jared's</div><button class="btn-delete-item" title="Delete item">×</button><button class="btn-delete-item" title="Delete item">×</button></div>
+        <div class="tl-item"><div class="drag-handle" title="Drag to reorder">⠿</div><div class="drag-handle" title="Drag to reorder">⠿</div>
           <div class="tl-row">
             <span class="tl-time">2:00 PM</span>
             <span class="tl-event">Spray Tan</span>
             <span class="tl-who">Tori</span>
           </div>
-          <div class="tl-details">At Jared &amp; Tori's house</div><button class="btn-delete-item" title="Delete item">×</button></div>
-        <div class="tl-item"><div class="drag-handle" title="Drag to reorder">⠿</div>
+          <div class="tl-details">At Jared &amp; Tori's house</div><button class="btn-delete-item" title="Delete item">×</button><button class="btn-delete-item" title="Delete item">×</button></div>
+        <div class="tl-item"><div class="drag-handle" title="Drag to reorder">⠿</div><div class="drag-handle" title="Drag to reorder">⠿</div>
           <div class="tl-row">
             <span class="tl-time">After 3:00 PM</span>
             <span class="tl-event">Check Britani, Jake &amp; Jessica into Hotel</span>
             <span class="tl-who">Britani, Jake, Jessica, Tori</span>
           </div>
-          <div class="tl-details">Hotel check-in available after 3:00 PM</div><button class="btn-delete-item" title="Delete item">×</button></div>
-      </div><button class="btn-add-item">+ Add Schedule Item</button>
+          <div class="tl-details">Hotel check-in available after 3:00 PM</div><button class="btn-delete-item" title="Delete item">×</button><button class="btn-delete-item" title="Delete item">×</button></div>
+      </div><button class="btn-add-item">+ Add Schedule Item</button><button class="btn-add-item">+ Add Schedule Item</button>
     </div>
 
   </section>
@@ -1295,7 +1305,7 @@
     <div class="schedule-group">
       <div class="group-title"><span>Daytime</span></div>
       <div class="timeline">
-        <div class="tl-item highlight"><div class="drag-handle" title="Drag to reorder">⠿</div>
+        <div class="tl-item highlight"><div class="drag-handle" title="Drag to reorder">⠿</div><div class="drag-handle" title="Drag to reorder">⠿</div>
           <div class="tl-row">
             <span class="tl-time">12:00–1:00 PM</span>
             <span class="tl-event">Wedding Rehearsal</span>
@@ -1304,8 +1314,8 @@
           <div class="tl-location">
             <svg width="10" height="13" viewBox="0 0 10 13" fill="none"><path d="M5 0C2.24 0 0 2.24 0 5c0 3.75 5 8 5 8s5-4.25 5-8c0-2.76-2.24-5-5-5zm0 6.5a1.5 1.5 0 110-3 1.5 1.5 0 010 3z" fill="currentColor"></path></svg>
             WRAL Azalea Gardens, 4601 Beryl Rd, Raleigh
-          </div><button class="btn-delete-item" title="Delete item">×</button></div>
-        <div class="tl-item"><div class="drag-handle" title="Drag to reorder">⠿</div>
+          </div><button class="btn-delete-item" title="Delete item">×</button><button class="btn-delete-item" title="Delete item">×</button></div>
+        <div class="tl-item"><div class="drag-handle" title="Drag to reorder">⠿</div><div class="drag-handle" title="Drag to reorder">⠿</div>
     <div class="tl-row">
       <span class="tl-time">1:15 PM</span>
       <span class="tl-event">Call Sola Coffee</span>
@@ -1315,8 +1325,8 @@
     <div>
       <a href="https://www.solacoffee.com/menupage" target="_blank" rel="noopener" class="tl-link link-sage">☕ View Sola Menu</a>
       <a href="https://docs.google.com/spreadsheets/d/1vbZ2TafyK1EDqw2-gysBvKb3HWgOyzbiLQrAots-4aQ/edit?gid=0#gid=0" target="_blank" rel="noopener" class="tl-link link-gold">📋 Submit Your Order</a>
-    </div><button class="btn-delete-item" title="Delete item">×</button></div>
-        <div class="tl-item"><div class="drag-handle" title="Drag to reorder">⠿</div>
+    </div><button class="btn-delete-item" title="Delete item">×</button><button class="btn-delete-item" title="Delete item">×</button></div>
+        <div class="tl-item"><div class="drag-handle" title="Drag to reorder">⠿</div><div class="drag-handle" title="Drag to reorder">⠿</div>
     <div class="tl-row">
       <span class="tl-time">1:30-4:00 PM</span>
       <span class="tl-event">Zinc House Hangout - Optional</span>
@@ -1325,21 +1335,21 @@
     <div class="tl-location">
       <svg width="10" height="13" viewBox="0 0 10 13" fill="none"><path d="M5 0C2.24 0 0 2.24 0 5c0 3.75 5 8 5 8s5-4.25 5-8c0-2.76-2.24-5-5-5zm0 6.5a1.5 1.5 0 110-3 1.5 1.5 0 010 3z" fill="currentColor"></path></svg>
       Zinc House, 6225 Wake Forest Hwy, Durham, NC 27703
-    </div><button class="btn-delete-item" title="Delete item">×</button></div>
-        <div class="tl-item"><div class="drag-handle" title="Drag to reorder">⠿</div>
+    </div><button class="btn-delete-item" title="Delete item">×</button><button class="btn-delete-item" title="Delete item">×</button></div>
+        <div class="tl-item"><div class="drag-handle" title="Drag to reorder">⠿</div><div class="drag-handle" title="Drag to reorder">⠿</div>
     <div class="tl-row">
       <span class="tl-time">TBD</span>
       <span class="tl-event">Pick Up Wegmans Subs</span>
       <span class="tl-who">Tori &amp; Jared</span>
     </div>
-    <div class="tl-details">For the welcome party at Bowstring Brewing</div><button class="btn-delete-item" title="Delete item">×</button></div>
-      </div><button class="btn-add-item">+ Add Schedule Item</button>
+    <div class="tl-details">For the welcome party at Bowstring Brewing</div><button class="btn-delete-item" title="Delete item">×</button><button class="btn-delete-item" title="Delete item">×</button></div>
+      </div><button class="btn-add-item">+ Add Schedule Item</button><button class="btn-add-item">+ Add Schedule Item</button>
     </div>
 
     <div class="schedule-group">
       <div class="group-title"><span>Welcome Party</span></div>
       <div class="timeline">
-        <div class="tl-item highlight"><div class="drag-handle" title="Drag to reorder">⠿</div>
+        <div class="tl-item highlight"><div class="drag-handle" title="Drag to reorder">⠿</div><div class="drag-handle" title="Drag to reorder">⠿</div>
           <div class="tl-row">
             <span class="tl-time">6:30 PM</span>
             <span class="tl-event">Welcome Party Begins</span>
@@ -1351,19 +1361,19 @@
           </div>
           <div class="tl-details" style="margin-top:8px; color: var(--warm-brown); font-style:italic;">
             Casual attire — come ready to relax and enjoy the evening!
-          </div><button class="btn-delete-item" title="Delete item">×</button></div>
-        <div class="tl-item"><div class="drag-handle" title="Drag to reorder">⠿</div>
+          </div><button class="btn-delete-item" title="Delete item">×</button><button class="btn-delete-item" title="Delete item">×</button></div>
+        <div class="tl-item"><div class="drag-handle" title="Drag to reorder">⠿</div><div class="drag-handle" title="Drag to reorder">⠿</div>
           <div class="tl-row">
             <span class="tl-time">9:30 PM</span>
             <span class="tl-event">Welcome Party Concludes</span>
-          </div><button class="btn-delete-item" title="Delete item">×</button></div>
-      </div><button class="btn-add-item">+ Add Schedule Item</button>
+          </div><button class="btn-delete-item" title="Delete item">×</button><button class="btn-delete-item" title="Delete item">×</button></div>
+      </div><button class="btn-add-item">+ Add Schedule Item</button><button class="btn-add-item">+ Add Schedule Item</button>
     </div>
 
   </section>
 
   <!-- ── SATURDAY ── -->
-  <section id="tab-sat" class="day-section active">
+  <section id="tab-sat" class="day-section">
     <div class="day-header">
       <h2>Saturday, May 2</h2>
       <span class="day-badge">Wedding Day 🌿</span>
@@ -1387,73 +1397,73 @@
       </div>
 
       <div class="timeline">
-        <div class="tl-item"><div class="drag-handle" title="Drag to reorder">⠿</div>
+        <div class="tl-item"><div class="drag-handle" title="Drag to reorder">⠿</div><div class="drag-handle" title="Drag to reorder">⠿</div>
           <div class="tl-row">
             <span class="tl-time">7:00 AM</span>
             <span class="tl-event">Pick Up Breakfast &amp; Coffee</span>
             <span class="tl-who">Ben, Bryan, and Jared</span>
           </div>
-          <div class="tl-details">Sola Coffee — bring back to the Airbnb</div><button class="btn-delete-item" title="Delete item">×</button></div>
-        <div class="tl-item"><div class="drag-handle" title="Drag to reorder">⠿</div>
+          <div class="tl-details">Sola Coffee — bring back to the Airbnb</div><button class="btn-delete-item" title="Delete item">×</button><button class="btn-delete-item" title="Delete item">×</button></div>
+        <div class="tl-item"><div class="drag-handle" title="Drag to reorder">⠿</div><div class="drag-handle" title="Drag to reorder">⠿</div>
           <div class="tl-row">
             <span class="tl-time">7:30 AM</span>
             <span class="tl-event">Bridesmaids Arrive at Airbnb</span>
             <span class="tl-who">Bridesmaids + Tori</span>
-          </div><button class="btn-delete-item" title="Delete item">×</button></div>
-        <div class="tl-item"><div class="drag-handle" title="Drag to reorder">⠿</div>
+          </div><button class="btn-delete-item" title="Delete item">×</button><button class="btn-delete-item" title="Delete item">×</button></div>
+        <div class="tl-item"><div class="drag-handle" title="Drag to reorder">⠿</div><div class="drag-handle" title="Drag to reorder">⠿</div>
           <div class="tl-row">
             <span class="tl-time">8:00 AM</span>
             <span class="tl-event">Makeup Artist &amp; Hair Dresser Arrive</span>
             <span class="tl-who">Bridesmaids + Tori</span>
           </div>
-          <div class="tl-details">At the Airbnb — hair &amp; makeup begins</div><button class="btn-delete-item" title="Delete item">×</button></div>
-        <div class="tl-item"><div class="drag-handle" title="Drag to reorder">⠿</div>
+          <div class="tl-details">At the Airbnb — hair &amp; makeup begins</div><button class="btn-delete-item" title="Delete item">×</button><button class="btn-delete-item" title="Delete item">×</button></div>
+        <div class="tl-item"><div class="drag-handle" title="Drag to reorder">⠿</div><div class="drag-handle" title="Drag to reorder">⠿</div>
           <div class="tl-row">
             <span class="tl-time">8:30–9:00 AM</span>
             <span class="tl-event">Groomsmen, Chris &amp; Lynn Arrive at Airbnb</span>
             <span class="tl-who">Groomsmen, Chris &amp; Lynn</span>
-          </div><button class="btn-delete-item" title="Delete item">×</button></div>
-        <div class="tl-item highlight"><div class="drag-handle" title="Drag to reorder">⠿</div>
+          </div><button class="btn-delete-item" title="Delete item">×</button><button class="btn-delete-item" title="Delete item">×</button></div>
+        <div class="tl-item highlight"><div class="drag-handle" title="Drag to reorder">⠿</div><div class="drag-handle" title="Drag to reorder">⠿</div>
           <div class="tl-row">
             <span class="tl-time">8:20 AM–1:00 PM</span>
             <span class="tl-event">Hair + Makeup</span>
             <span class="tl-who">Bridesmaids + Tori</span>
           </div>
-          <div class="tl-details">All girls must be ready by 1:00 PM — photographer arrives at 1:00 PM</div><button class="btn-delete-item" title="Delete item">×</button></div>
-        <div class="tl-item"><div class="drag-handle" title="Drag to reorder">⠿</div>
+          <div class="tl-details">All girls must be ready by 1:00 PM — photographer arrives at 1:00 PM</div><button class="btn-delete-item" title="Delete item">×</button><button class="btn-delete-item" title="Delete item">×</button></div>
+        <div class="tl-item"><div class="drag-handle" title="Drag to reorder">⠿</div><div class="drag-handle" title="Drag to reorder">⠿</div>
           <div class="tl-row">
             <span class="tl-time">12:00 PM</span>
             <span class="tl-event">Groomsmen Go to Second Empire</span>
             <span class="tl-who">Groomsmen</span>
           </div>
-          <div class="tl-details">Set up and prepare the reception room</div><button class="btn-delete-item" title="Delete item">×</button></div>
-        <div class="tl-item highlight"><div class="drag-handle" title="Drag to reorder">⠿</div>
+          <div class="tl-details">Set up and prepare the reception room</div><button class="btn-delete-item" title="Delete item">×</button><button class="btn-delete-item" title="Delete item">×</button></div>
+        <div class="tl-item highlight"><div class="drag-handle" title="Drag to reorder">⠿</div><div class="drag-handle" title="Drag to reorder">⠿</div>
           <div class="tl-row">
             <span class="tl-time">1:00 PM</span>
             <span class="tl-event">Photographer Arrives — 8 Hours Begins</span>
           </div>
-          <div class="tl-details">Naomi Turner · 252-940-3909 · At the Airbnb</div><button class="btn-delete-item" title="Delete item">×</button></div>
-        <div class="tl-item"><div class="drag-handle" title="Drag to reorder">⠿</div>
+          <div class="tl-details">Naomi Turner · 252-940-3909 · At the Airbnb</div><button class="btn-delete-item" title="Delete item">×</button><button class="btn-delete-item" title="Delete item">×</button></div>
+        <div class="tl-item"><div class="drag-handle" title="Drag to reorder">⠿</div><div class="drag-handle" title="Drag to reorder">⠿</div>
           <div class="tl-row">
             <span class="tl-time">1:00 PM</span>
             <span class="tl-event">Photos — Getting Ready</span>
           </div>
-          <div class="tl-details">Getting ready photos</div><button class="btn-delete-item" title="Delete item">×</button></div>
-        <div class="tl-item highlight"><div class="drag-handle" title="Drag to reorder">⠿</div>
+          <div class="tl-details">Getting ready photos</div><button class="btn-delete-item" title="Delete item">×</button><button class="btn-delete-item" title="Delete item">×</button></div>
+        <div class="tl-item highlight"><div class="drag-handle" title="Drag to reorder">⠿</div><div class="drag-handle" title="Drag to reorder">⠿</div>
           <div class="tl-row">
             <span class="tl-time">2:45 PM</span>
             <span class="tl-event">Depart Airbnb for WRAL Gardens</span>
             <span class="tl-who">Wedding party</span>
           </div>
-          <div class="tl-details">⚠️ Must leave by 2:45 PM to arrive on time. Planning to book 2 Ubers and drive Tori's car</div><button class="btn-delete-item" title="Delete item">×</button></div>
-      </div><button class="btn-add-item">+ Add Schedule Item</button>
+          <div class="tl-details">⚠️ Must leave by 2:45 PM to arrive on time. Planning to book 2 Ubers and drive Tori's car</div><button class="btn-delete-item" title="Delete item">×</button><button class="btn-delete-item" title="Delete item">×</button></div>
+      </div><button class="btn-add-item">+ Add Schedule Item</button><button class="btn-add-item">+ Add Schedule Item</button>
     </div>
 
     <!-- CEREMONY -->
     <div class="schedule-group">
       <div class="group-title"><span>The Ceremony</span></div>
       <div class="timeline">
-        <div class="tl-item"><div class="drag-handle" title="Drag to reorder">⠿</div>
+        <div class="tl-item"><div class="drag-handle" title="Drag to reorder">⠿</div><div class="drag-handle" title="Drag to reorder">⠿</div>
           <div class="tl-row">
             <span class="tl-time">3:15 PM</span>
             <span class="tl-event">Wedding Party Arrives at Gardens</span>
@@ -1462,38 +1472,38 @@
           <div class="tl-location">
             <svg width="10" height="13" viewBox="0 0 10 13" fill="none"><path d="M5 0C2.24 0 0 2.24 0 5c0 3.75 5 8 5 8s5-4.25 5-8c0-2.76-2.24-5-5-5zm0 6.5a1.5 1.5 0 110-3 1.5 1.5 0 010 3z" fill="currentColor"></path></svg>
             WRAL Azalea Gardens, 4601 Beryl Rd
-          </div><button class="btn-delete-item" title="Delete item">×</button></div>
-        <div class="tl-item"><div class="drag-handle" title="Drag to reorder">⠿</div>
+          </div><button class="btn-delete-item" title="Delete item">×</button><button class="btn-delete-item" title="Delete item">×</button></div>
+        <div class="tl-item"><div class="drag-handle" title="Drag to reorder">⠿</div><div class="drag-handle" title="Drag to reorder">⠿</div>
           <div class="tl-row">
             <span class="tl-time">3:15–4:40 PM</span>
             <span class="tl-event">Pre-Ceremony Photos</span>
             <span class="tl-who">Wedding party</span>
           </div>
-          <div class="tl-details">First look, vows, and bridal party photos at WRAL Garden</div><button class="btn-delete-item" title="Delete item">×</button></div>
-        <div class="tl-item"><div class="drag-handle" title="Drag to reorder">⠿</div>
+          <div class="tl-details">First look, vows, and bridal party photos at WRAL Garden</div><button class="btn-delete-item" title="Delete item">×</button><button class="btn-delete-item" title="Delete item">×</button></div>
+        <div class="tl-item"><div class="drag-handle" title="Drag to reorder">⠿</div><div class="drag-handle" title="Drag to reorder">⠿</div>
           <div class="tl-row">
             <span class="tl-time">3:30 PM</span>
             <span class="tl-event">WRAL Gardens Reserved — Garden Ceremony Area Access Begins</span>
           </div>
-          <div class="tl-details">Reserved 3:30 PM – 6:00 PM</div><button class="btn-delete-item" title="Delete item">×</button></div>
-        <div class="tl-item"><div class="drag-handle" title="Drag to reorder">⠿</div>
+          <div class="tl-details">Reserved 3:30 PM – 6:00 PM</div><button class="btn-delete-item" title="Delete item">×</button><button class="btn-delete-item" title="Delete item">×</button></div>
+        <div class="tl-item"><div class="drag-handle" title="Drag to reorder">⠿</div><div class="drag-handle" title="Drag to reorder">⠿</div>
           <div class="tl-row">
             <span class="tl-time">3:45 PM</span>
             <span class="tl-event">Trolley Pick-Up Begins</span>
           </div>
-          <div class="tl-details">Trolley transports guests to WRAL Gardens from Second Empire · Rental: 3:45–7:45 PM. Parents to ride the first trolley to garden. One car to be parked in the parking lot behind Second Empire.</div><button class="btn-delete-item" title="Delete item">×</button></div>
-        <div class="tl-item"><div class="drag-handle" title="Drag to reorder">⠿</div>
+          <div class="tl-details">Trolley transports guests to WRAL Gardens from Second Empire · Rental: 3:45–7:45 PM. Parents to ride the first trolley to garden. One car to be parked in the parking lot behind Second Empire.</div><button class="btn-delete-item" title="Delete item">×</button><button class="btn-delete-item" title="Delete item">×</button></div>
+        <div class="tl-item"><div class="drag-handle" title="Drag to reorder">⠿</div><div class="drag-handle" title="Drag to reorder">⠿</div>
           <div class="tl-row">
             <span class="tl-time">~4:00 PM</span>
             <span class="tl-event">First Guests Arrive at Gardens</span>
-          </div><button class="btn-delete-item" title="Delete item">×</button></div>
-        <div class="tl-item"><div class="drag-handle" title="Drag to reorder">⠿</div>
+          </div><button class="btn-delete-item" title="Delete item">×</button><button class="btn-delete-item" title="Delete item">×</button></div>
+        <div class="tl-item"><div class="drag-handle" title="Drag to reorder">⠿</div><div class="drag-handle" title="Drag to reorder">⠿</div>
           <div class="tl-row">
             <span class="tl-time">4:40–5:00 PM</span>
             <span class="tl-event">Guests Take Seats — Ceremony Prep</span>
           </div>
-          <div class="tl-details">Please be seated by 4:45 PM. Parents to welcome guests</div><button class="btn-delete-item" title="Delete item">×</button></div>
-        <div class="tl-item highlight"><div class="drag-handle" title="Drag to reorder">⠿</div>
+          <div class="tl-details">Please be seated by 4:45 PM. Parents to welcome guests</div><button class="btn-delete-item" title="Delete item">×</button><button class="btn-delete-item" title="Delete item">×</button></div>
+        <div class="tl-item highlight"><div class="drag-handle" title="Drag to reorder">⠿</div><div class="drag-handle" title="Drag to reorder">⠿</div>
           <div class="tl-row">
             <span class="tl-time">5:00 PM</span>
             <span class="tl-event">✦ Wedding Ceremony ✦</span>
@@ -1502,49 +1512,49 @@
           <div class="tl-location">
             <svg width="10" height="13" viewBox="0 0 10 13" fill="none"><path d="M5 0C2.24 0 0 2.24 0 5c0 3.75 5 8 5 8s5-4.25 5-8c0-2.76-2.24-5-5-5zm0 6.5a1.5 1.5 0 110-3 1.5 1.5 0 010 3z" fill="currentColor"></path></svg>
             WRAL Azalea Gardens, 4601 Beryl Rd, Raleigh
-          </div><button class="btn-delete-item" title="Delete item">×</button></div>
+          </div><button class="btn-delete-item" title="Delete item">×</button><button class="btn-delete-item" title="Delete item">×</button></div>
         
-        <div class="tl-item"><div class="drag-handle" title="Drag to reorder">⠿</div>
+        <div class="tl-item"><div class="drag-handle" title="Drag to reorder">⠿</div><div class="drag-handle" title="Drag to reorder">⠿</div>
     <div class="tl-row">
       <span class="tl-time">5:20 - 6:00 PM</span>
       <span class="tl-event">Family Photos</span>
       <span class="tl-who">Tori &amp; Jared + Family</span>
     </div>
-    <div class="tl-details">Immediate family photos + other photos</div><button class="btn-delete-item" title="Delete item">×</button></div><div class="tl-item"><div class="drag-handle" title="Drag to reorder">⠿</div>
+    <div class="tl-details">Immediate family photos + other photos</div><button class="btn-delete-item" title="Delete item">×</button><button class="btn-delete-item" title="Delete item">×</button></div><div class="tl-item"><div class="drag-handle" title="Drag to reorder">⠿</div><div class="drag-handle" title="Drag to reorder">⠿</div>
           <div class="tl-row">
             <span class="tl-time">5:45 PM</span>
             <span class="tl-event">First Trolley Departs WRAL</span>
             <span class="tl-who">All guests + parents, not bridal party</span>
           </div>
-          <div class="tl-details">Arrives at Second Empire ~5:55 PM</div><button class="btn-delete-item" title="Delete item">×</button></div>
-        <div class="tl-item"><div class="drag-handle" title="Drag to reorder">⠿</div>
+          <div class="tl-details">Arrives at Second Empire ~5:55 PM</div><button class="btn-delete-item" title="Delete item">×</button><button class="btn-delete-item" title="Delete item">×</button></div>
+        <div class="tl-item"><div class="drag-handle" title="Drag to reorder">⠿</div><div class="drag-handle" title="Drag to reorder">⠿</div>
           <div class="tl-row">
             <span class="tl-time">6:00 PM</span>
             <span class="tl-event">WRAL Reservation Ends</span>
           </div>
-          <div class="tl-details">Guests line up for trolley to Second Empire</div><button class="btn-delete-item" title="Delete item">×</button></div>
+          <div class="tl-details">Guests line up for trolley to Second Empire</div><button class="btn-delete-item" title="Delete item">×</button><button class="btn-delete-item" title="Delete item">×</button></div>
         
-        <div class="tl-item"><div class="drag-handle" title="Drag to reorder">⠿</div>
+        <div class="tl-item"><div class="drag-handle" title="Drag to reorder">⠿</div><div class="drag-handle" title="Drag to reorder">⠿</div>
     <div class="tl-row">
       <span class="tl-time">6:10 PM</span>
       <span class="tl-event">Second Trolley Departs WRAL</span>
       <span class="tl-who">All guests, not bridal party</span>
     </div>
-    <div class="tl-details">Arrives at Second Empire ~6:20 PM</div><button class="btn-delete-item" title="Delete item">×</button></div><div class="tl-item"><div class="drag-handle" title="Drag to reorder">⠿</div>
+    <div class="tl-details">Arrives at Second Empire ~6:20 PM</div><button class="btn-delete-item" title="Delete item">×</button><button class="btn-delete-item" title="Delete item">×</button></div><div class="tl-item"><div class="drag-handle" title="Drag to reorder">⠿</div><div class="drag-handle" title="Drag to reorder">⠿</div>
           <div class="tl-row">
             <span class="tl-time">6:30 PM</span>
             <span class="tl-event">Final Trolley Departs WRAL</span>
             <span class="tl-who">Bridal party + plus-ones</span>
           </div>
-          <div class="tl-details">Arrives at Second Empire ~6:40 PM</div><button class="btn-delete-item" title="Delete item">×</button></div>
-      </div><button class="btn-add-item">+ Add Schedule Item</button>
+          <div class="tl-details">Arrives at Second Empire ~6:40 PM</div><button class="btn-delete-item" title="Delete item">×</button><button class="btn-delete-item" title="Delete item">×</button></div>
+      </div><button class="btn-add-item">+ Add Schedule Item</button><button class="btn-add-item">+ Add Schedule Item</button>
     </div>
 
     <!-- RECEPTION -->
     <div class="schedule-group">
       <div class="group-title"><span>The Reception</span></div>
       <div class="timeline">
-        <div class="tl-item highlight"><div class="drag-handle" title="Drag to reorder">⠿</div>
+        <div class="tl-item highlight"><div class="drag-handle" title="Drag to reorder">⠿</div><div class="drag-handle" title="Drag to reorder">⠿</div>
           <div class="tl-row">
             <span class="tl-time">6:15–7:15 PM</span>
             <span class="tl-event">Cocktail Hour</span>
@@ -1553,48 +1563,48 @@
           <div class="tl-location">
             <svg width="10" height="13" viewBox="0 0 10 13" fill="none"><path d="M5 0C2.24 0 0 2.24 0 5c0 3.75 5 8 5 8s5-4.25 5-8c0-2.76-2.24-5-5-5zm0 6.5a1.5 1.5 0 110-3 1.5 1.5 0 010 3z" fill="currentColor"></path></svg>
             Second Empire, 330 Hillsborough St, Raleigh
-          </div><button class="btn-delete-item" title="Delete item">×</button></div>
-        <div class="tl-item"><div class="drag-handle" title="Drag to reorder">⠿</div>
+          </div><button class="btn-delete-item" title="Delete item">×</button><button class="btn-delete-item" title="Delete item">×</button></div>
+        <div class="tl-item"><div class="drag-handle" title="Drag to reorder">⠿</div><div class="drag-handle" title="Drag to reorder">⠿</div>
           <div class="tl-row">
             <span class="tl-time">7:15–7:45 PM</span>
             <span class="tl-event">Speeches &amp; Toasts</span>
-          </div><button class="btn-delete-item" title="Delete item">×</button></div>
-        <div class="tl-item highlight"><div class="drag-handle" title="Drag to reorder">⠿</div>
+          </div><button class="btn-delete-item" title="Delete item">×</button><button class="btn-delete-item" title="Delete item">×</button></div>
+        <div class="tl-item highlight"><div class="drag-handle" title="Drag to reorder">⠿</div><div class="drag-handle" title="Drag to reorder">⠿</div>
           <div class="tl-row">
             <span class="tl-time">7:30–8:45 PM</span>
             <span class="tl-event">Dinner &amp; Celebration</span>
             <span class="tl-who">All guests</span>
           </div>
-          <div class="tl-details">Enjoy dinner and drinks</div><button class="btn-delete-item" title="Delete item">×</button></div>
+          <div class="tl-details">Enjoy dinner and drinks</div><button class="btn-delete-item" title="Delete item">×</button><button class="btn-delete-item" title="Delete item">×</button></div>
         
-      <div class="tl-item"><div class="drag-handle" title="Drag to reorder">⠿</div>
+      <div class="tl-item"><div class="drag-handle" title="Drag to reorder">⠿</div><div class="drag-handle" title="Drag to reorder">⠿</div>
     <div class="tl-row">
       <span class="tl-time">9:10 - 9:30 PM</span>
       <span class="tl-event">Wedding Decor/Items Pack-up</span>
       <span class="tl-who">Jared + Groomsmen</span>
     </div>
-    <div class="tl-details">Remove all wedding decor/items and pack the car</div><button class="btn-delete-item" title="Delete item">×</button></div></div><button class="btn-add-item">+ Add Schedule Item</button>
+    <div class="tl-details">Remove all wedding decor/items and pack the car</div><button class="btn-delete-item" title="Delete item">×</button><button class="btn-delete-item" title="Delete item">×</button></div></div><button class="btn-add-item">+ Add Schedule Item</button><button class="btn-add-item">+ Add Schedule Item</button>
     </div>
 
     <!-- AFTER PARTY -->
     <div class="schedule-group">
       <div class="group-title"><span>The After Party</span></div>
       <div class="timeline">
-        <div class="tl-item highlight"><div class="drag-handle" title="Drag to reorder">⠿</div>
+        <div class="tl-item highlight"><div class="drag-handle" title="Drag to reorder">⠿</div><div class="drag-handle" title="Drag to reorder">⠿</div>
           <div class="tl-row">
             <span class="tl-time">~9:30 PM</span>
             <span class="tl-event">After Party Begins — Continue the Celebration!</span>
           </div>
-          <div class="tl-details">Downtown Raleigh</div><button class="btn-delete-item" title="Delete item">×</button></div>
+          <div class="tl-details">Downtown Raleigh</div><button class="btn-delete-item" title="Delete item">×</button><button class="btn-delete-item" title="Delete item">×</button></div>
         
         
-      </div><button class="btn-add-item">+ Add Schedule Item</button>
+      </div><button class="btn-add-item">+ Add Schedule Item</button><button class="btn-add-item">+ Add Schedule Item</button>
     </div>
 
   </section>
 
   <!-- ── HAIR & MAKEUP ── -->
-  <section id="tab-hm" class="day-section">
+  <section id="tab-hm" class="day-section active">
     <div class="day-header">
       <h2>Hair &amp; Makeup</h2>
       <span class="day-badge">Saturday, May 2</span>
@@ -1637,44 +1647,44 @@
               <td>8:00–8:20 AM</td>
               <td></td>
               <td>Dorothy (Makeup Artist) — Arrival &amp; Setup</td>
-            <td><button class="btn-delete-tr" title="Delete row">×</button></td></tr>
+            <td><button class="btn-delete-tr" title="Delete row">×</button></td><td><button class="btn-delete-tr" title="Delete row">×</button></td></tr>
             <tr>
               <td>8:20–9:00 AM</td>
               <td></td>
               <td>Gaby</td>
-            <td><button class="btn-delete-tr" title="Delete row">×</button></td></tr>
+            <td><button class="btn-delete-tr" title="Delete row">×</button></td><td><button class="btn-delete-tr" title="Delete row">×</button></td></tr>
             <tr>
               <td>9:00–9:40 AM</td>
               <td></td>
               <td>Lauren</td>
-            <td><button class="btn-delete-tr" title="Delete row">×</button></td></tr>
+            <td><button class="btn-delete-tr" title="Delete row">×</button></td><td><button class="btn-delete-tr" title="Delete row">×</button></td></tr>
             <tr>
               <td>9:40–10:20 AM</td>
               <td></td>
               <td>Britani</td>
-            <td><button class="btn-delete-tr" title="Delete row">×</button></td></tr>
+            <td><button class="btn-delete-tr" title="Delete row">×</button></td><td><button class="btn-delete-tr" title="Delete row">×</button></td></tr>
             <tr>
               <td>10:20–11:00 AM</td>
               <td></td>
               <td>Chris — Mother of the Bride</td>
-            <td><button class="btn-delete-tr" title="Delete row">×</button></td></tr>
+            <td><button class="btn-delete-tr" title="Delete row">×</button></td><td><button class="btn-delete-tr" title="Delete row">×</button></td></tr>
             <tr>
               <td>11:00–11:40 AM</td>
               <td></td>
               <td>Tori</td>
-            <td><button class="btn-delete-tr" title="Delete row">×</button></td></tr>
+            <td><button class="btn-delete-tr" title="Delete row">×</button></td><td><button class="btn-delete-tr" title="Delete row">×</button></td></tr>
             <tr>
               <td>11:40 AM–12:20 PM</td>
               <td></td>
               <td>Tori (continued)</td>
-            <td><button class="btn-delete-tr" title="Delete row">×</button></td></tr>
+            <td><button class="btn-delete-tr" title="Delete row">×</button></td><td><button class="btn-delete-tr" title="Delete row">×</button></td></tr>
             <tr>
               <td>12:20–1:00 PM</td>
               <td></td>
-              <td>Andrea</td>
-            <td><button class="btn-delete-tr" title="Delete row">×</button></td></tr>
-          </tbody>
-        </table><button class="btn-add-hmrow">+ Add Row</button></div>
+              <td>Lynn</td>
+            <td><button class="btn-delete-tr" title="Delete row">×</button></td><td><button class="btn-delete-tr" title="Delete row">×</button></td></tr>
+          <tr><td>1:00 - 1:40 PM</td><td></td><td>Jessica</td><td><button class="btn-delete-tr" title="Delete row">×</button></td></tr></tbody>
+        </table><button class="btn-add-hmrow">+ Add Row</button><button class="btn-add-hmrow">+ Add Row</button></div>
     </div>
 
   </section>
