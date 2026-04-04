@@ -535,6 +535,245 @@
       font-size: 0.75rem;
     }
 
+    /* ── EDIT MODE ── */
+    .edit-fab {
+      position: fixed;
+      bottom: 28px;
+      right: 28px;
+      z-index: 999;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 10px;
+    }
+    .fab-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 12px 22px;
+      border: none;
+      border-radius: 50px;
+      cursor: pointer;
+      font-family: 'Lato', sans-serif;
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      box-shadow: 0 4px 18px rgba(0,0,0,0.18);
+      transition: transform 0.15s, box-shadow 0.15s;
+      white-space: nowrap;
+    }
+    .fab-btn:hover { transform: translateY(-2px); box-shadow: 0 6px 24px rgba(0,0,0,0.22); }
+    .fab-btn:active { transform: translateY(0); }
+    .fab-edit { background: var(--sage); color: white; }
+    .fab-done { background: var(--sage-dark); color: white; display: none; }
+    .fab-save { background: var(--gold); color: var(--text-dark); display: none; }
+    body.editing .fab-edit { display: none; }
+    body.editing .fab-done { display: inline-flex; }
+    body.editing .fab-save { display: inline-flex; }
+
+    .edit-banner {
+      display: none;
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 200;
+      background: var(--sage-dark);
+      color: white;
+      text-align: center;
+      padding: 8px 16px;
+      font-size: 0.72rem;
+      font-weight: 400;
+      letter-spacing: 0.08em;
+    }
+    .edit-banner strong { font-weight: 700; margin: 0 6px; }
+    .edit-banner .sep { opacity: 0.4; margin: 0 4px; }
+    body.editing .edit-banner { display: block; }
+    body.editing .tabs-wrapper { top: 35px; }
+
+    body.editing [contenteditable="true"] {
+      outline: none;
+      border-radius: 3px;
+      padding: 1px 4px;
+      margin: -1px -4px;
+      background: rgba(122,158,126,0.12);
+      cursor: text;
+      transition: background 0.15s, box-shadow 0.15s;
+      min-width: 20px;
+      display: inline-block;
+    }
+    body.editing [contenteditable="true"]:hover { background: rgba(122,158,126,0.18); }
+    body.editing [contenteditable="true"]:focus {
+      background: rgba(255,255,255,0.9);
+      box-shadow: 0 0 0 2px var(--sage), 0 2px 8px rgba(92,122,96,0.2);
+      color: var(--text-dark);
+    }
+    body.editing [contenteditable="true"]:empty::before {
+      content: attr(data-ph);
+      color: var(--sage-mid);
+      font-style: italic;
+      font-weight: 300;
+    }
+
+    .drag-handle {
+      display: none;
+      position: absolute;
+      left: 0; top: 0; bottom: 0;
+      width: 26px;
+      align-items: center;
+      justify-content: center;
+      cursor: grab;
+      color: var(--sage-light);
+      border-radius: 8px 0 0 8px;
+      transition: color 0.15s, background 0.15s;
+      font-size: 13px;
+      letter-spacing: -1px;
+      user-select: none;
+      -webkit-user-select: none;
+    }
+    .drag-handle:hover { color: var(--sage); background: rgba(122,158,126,0.08); }
+    .drag-handle:active { cursor: grabbing; }
+    body.editing .drag-handle { display: flex; }
+    body.editing .tl-item { padding-left: 36px; }
+
+    .tl-item.is-dragging { opacity: 0.35; box-shadow: none !important; }
+    .venue-card.is-dragging { opacity: 0.35; }
+
+    .drop-line {
+      display: none;
+      height: 3px;
+      background: var(--sage);
+      border-radius: 3px;
+      margin: 0 0 -3px;
+      position: relative;
+      z-index: 50;
+      pointer-events: none;
+      animation: dropLinePulse 0.8s ease-in-out infinite alternate;
+    }
+    .drop-line::before {
+      content: '';
+      position: absolute;
+      left: -5px; top: -4px;
+      width: 11px; height: 11px;
+      border-radius: 50%;
+      background: var(--sage);
+    }
+    @keyframes dropLinePulse {
+      from { opacity: 0.7; }
+      to   { opacity: 1; box-shadow: 0 0 8px rgba(122,158,126,0.6); }
+    }
+    .drop-line.visible { display: block; }
+    .venue-card.drop-target-before { outline: 2px solid var(--sage); outline-offset: 2px; }
+
+    .tl-item { position: relative; }
+    .btn-delete-item {
+      display: none;
+      position: absolute;
+      top: 8px; right: 8px;
+      width: 22px; height: 22px;
+      border-radius: 50%;
+      border: none;
+      background: #ef9a9a;
+      color: white;
+      font-size: 0.9rem;
+      line-height: 1;
+      cursor: pointer;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.15s, transform 0.1s;
+      z-index: 10;
+    }
+    .btn-delete-item:hover { background: #e53935; transform: scale(1.15); }
+    body.editing .btn-delete-item { display: flex; }
+
+    .venue-card { position: relative; }
+    .btn-delete-card {
+      display: none;
+      position: absolute;
+      top: 7px; right: 9px;
+      background: none;
+      border: none;
+      color: #ef9a9a;
+      font-size: 1.2rem;
+      cursor: pointer;
+      line-height: 1;
+      padding: 2px;
+      transition: color 0.15s;
+    }
+    .btn-delete-card:hover { color: #e53935; }
+    body.editing .btn-delete-card { display: block; }
+
+    .btn-add-item {
+      display: none;
+      width: 100%;
+      margin-top: 10px;
+      padding: 10px;
+      background: rgba(122,158,126,0.06);
+      border: 1.5px dashed var(--sage-mid);
+      border-radius: 8px;
+      color: var(--sage-dark);
+      font-family: 'Lato', sans-serif;
+      font-size: 0.76rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: background 0.15s, border-color 0.15s;
+    }
+    .btn-add-item:hover { background: rgba(122,158,126,0.14); border-color: var(--sage); }
+    body.editing .btn-add-item { display: block; }
+
+    .btn-add-hmrow {
+      display: none;
+      width: 100%;
+      padding: 9px;
+      background: rgba(122,158,126,0.06);
+      border: 1.5px dashed var(--sage-mid);
+      border-radius: 0 0 8px 8px;
+      color: var(--sage-dark);
+      font-family: 'Lato', sans-serif;
+      font-size: 0.76rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: background 0.15s;
+    }
+    .btn-add-hmrow:hover { background: rgba(122,158,126,0.14); }
+    body.editing .btn-add-hmrow { display: block; }
+
+    .btn-delete-tr {
+      display: none;
+      background: none;
+      border: none;
+      color: #ef9a9a;
+      font-size: 1rem;
+      cursor: pointer;
+      padding: 0 4px;
+      transition: color 0.15s;
+    }
+    .btn-delete-tr:hover { color: #e53935; }
+    body.editing .btn-delete-tr { display: inline; }
+
+    .btn-add-venue {
+      display: none;
+      min-width: 160px;
+      background: rgba(122,158,126,0.06);
+      border: 1.5px dashed var(--sage-mid);
+      border-radius: 6px;
+      color: var(--sage-dark);
+      font-family: 'Lato', sans-serif;
+      font-size: 0.73rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      cursor: pointer;
+      padding: 18px 20px;
+      transition: background 0.15s;
+      align-self: stretch;
+    }
+    .btn-add-venue:hover { background: rgba(122,158,126,0.14); }
+    body.editing .btn-add-venue { display: block; }
+
     /* ── FLORAL FOOTER ── */
     .footer {
       text-align: center;
@@ -820,7 +1059,9 @@
     }
   </style>
 </head>
-<body>
+<body class="">
+
+<div class="edit-banner">✏️ Edit Mode <span class="sep">|</span> <strong>Click text</strong> to edit <span class="sep">|</span> <strong>Drag ⠿</strong> to reorder <span class="sep">|</span> <strong>×</strong> to delete <span class="sep">|</span> <strong>+ buttons</strong> to add</div>
 
 <!-- ═══════════════════════════════ HERO ═══════════════════════════════ -->
 <header class="hero">
@@ -873,37 +1114,37 @@
       <div class="vc-label">Getting Ready</div>
       <div class="vc-name">The Airbnb</div>
       <div class="vc-time">Saturday, May 2 — Morning</div>
-      <div class="vc-addr">4412 Major Loring Way, Raleigh, NC 27616</div></div>
+      <div class="vc-addr">4412 Major Loring Way, Raleigh, NC 27616</div><button class="btn-delete-card" title="Delete venue">×</button></div>
     <div class="venue-card">
       <div class="vc-label">Rehearsal</div>
       <div class="vc-name">WRAL Azalea Gardens</div>
       <div class="vc-time">Friday, May 1 — 12:00–1:00 PM</div>
-      <div class="vc-addr">4601 Beryl Road, Raleigh, NC</div></div>
+      <div class="vc-addr">4601 Beryl Road, Raleigh, NC</div><button class="btn-delete-card" title="Delete venue">×</button></div>
     <div class="venue-card">
       <div class="vc-label">Welcome Party</div>
       <div class="vc-name">Bowstring Brewing</div>
       <div class="vc-time">Friday, May 1 — 6:30–9:30 PM</div>
-      <div class="vc-addr">1930 Wake Forest Rd, Raleigh, NC 27608</div></div>
+      <div class="vc-addr">1930 Wake Forest Rd, Raleigh, NC 27608</div><button class="btn-delete-card" title="Delete venue">×</button></div>
     <div class="venue-card">
       <div class="vc-label">Ceremony</div>
       <div class="vc-name">WRAL Azalea Gardens</div>
       <div class="vc-time">Saturday, May 2 — 5:00 PM</div>
-      <div class="vc-addr">4601 Beryl Road, Raleigh, NC</div></div>
+      <div class="vc-addr">4601 Beryl Road, Raleigh, NC</div><button class="btn-delete-card" title="Delete venue">×</button></div>
     <div class="venue-card">
       <div class="vc-label">Reception</div>
       <div class="vc-name">Second Empire</div>
       <div class="vc-time">Saturday, May 2 — 6:15 PM</div>
-      <div class="vc-addr">330 Hillsborough St, Raleigh, NC</div></div>
+      <div class="vc-addr">330 Hillsborough St, Raleigh, NC</div><button class="btn-delete-card" title="Delete venue">×</button></div>
     <div class="venue-card">
       <div class="vc-label">After Party</div>
       <div class="vc-name">Downtown Raleigh</div>
       <div class="vc-time">Saturday, May 2 — ~9:00 PM</div>
-      <div class="vc-addr">The Moon Room / Boxcar Bar + Arcade</div></div>
+      <div class="vc-addr">The Moon Room / Boxcar Bar + Arcade</div><button class="btn-delete-card" title="Delete venue">×</button></div>
   <div class="venue-card">
     <div class="vc-label">Optional Hangout</div>
     <div class="vc-name">Zinc House</div>
     <div class="vc-time">Friday, May 2 - 1:30 -4:00 PM</div>
-    <div class="vc-addr">6225 Wake Forest Hwy, Durham, NC 27703</div></div></div>
+    <div class="vc-addr">6225 Wake Forest Hwy, Durham, NC 27703</div><button class="btn-delete-card" title="Delete venue">×</button></div><button class="btn-add-venue">+ Add Venue</button></div>
 </section>
 
 <!-- ═══════════════════════════════ TABS ═══════════════════════════════ -->
@@ -915,10 +1156,10 @@
     <button class="tab-btn" onclick="switchTab('thu')" role="tab" aria-selected="false">
       <span class="tab-day">Thursday</span>Apr 30
     </button>
-    <button class="tab-btn active" onclick="switchTab('fri')" role="tab" aria-selected="true">
+    <button class="tab-btn" onclick="switchTab('fri')" role="tab" aria-selected="false">
       <span class="tab-day">Friday</span>May 1
     </button>
-    <button class="tab-btn" onclick="switchTab('sat')" role="tab" aria-selected="false">
+    <button class="tab-btn active" onclick="switchTab('sat')" role="tab" aria-selected="true">
       <span class="tab-day">Saturday</span>May 2 — Wedding Day
     </button>
     <button class="tab-btn" onclick="switchTab('hm')" role="tab" aria-selected="false">
@@ -940,9 +1181,9 @@
     <div class="info-grid">
       <div class="info-card">
         <div class="ic-icon">🌸</div>
-        <div class="ic-title">Airbnb Address</div>
-        <div class="ic-val">4412 Major Loring Way</div>
-        <div class="ic-sub">Raleigh, NC 27616</div>
+        <div class="ic-title">Tori &amp; Jared's Place</div>
+        <div class="ic-val">1701 Grandmaster Way</div>
+        <div class="ic-sub">Wake Forest, NC 27587</div>
       </div>
       <div class="info-card">
         <div class="ic-icon">🍃</div>
@@ -955,47 +1196,47 @@
     <div class="schedule-group">
       <div class="group-title"><span>Schedule</span></div>
       <div class="timeline">
-        <div class="tl-item">
+        <div class="tl-item"><div class="drag-handle" title="Drag to reorder">⠿</div>
           <div class="tl-row">
             <span class="tl-time">9:00 AM</span>
             <span class="tl-event">Trader Joe's — Look at Flowers</span>
             <span class="tl-who">Tori + Jared</span>
           </div>
-          <div class="tl-details">Browse flower options for bouquet-making</div></div>
-        <div class="tl-item">
+          <div class="tl-details">Browse flower options for bouquet-making</div><button class="btn-delete-item" title="Delete item">×</button></div>
+        <div class="tl-item"><div class="drag-handle" title="Drag to reorder">⠿</div>
           <div class="tl-row">
             <span class="tl-time">TBD</span>
             <span class="tl-event">Nails</span>
             <span class="tl-who">Tori + Lauren</span>
-          </div></div>
-        <div class="tl-item">
+          </div><button class="btn-delete-item" title="Delete item">×</button></div>
+        <div class="tl-item"><div class="drag-handle" title="Drag to reorder">⠿</div>
           <div class="tl-row">
             <span class="tl-time">TBD</span>
             <span class="tl-event">Chris and Bob Arrive</span>
           </div>
-          <div class="tl-details">Arrival time to be confirmed</div></div>
-        <div class="tl-item">
+          <div class="tl-details">Arrival time to be confirmed</div><button class="btn-delete-item" title="Delete item">×</button></div>
+        <div class="tl-item"><div class="drag-handle" title="Drag to reorder">⠿</div>
           <div class="tl-row">
             <span class="tl-time">After 3:00 PM</span>
             <span class="tl-event">Terri and Howie Arrive, Hotel Check-in</span>
             <span class="tl-who">Tori, Howie, Terri, Chris, Bob</span>
           </div>
-          <div class="tl-details">Hotel check-in available after 3:00 PM</div></div>
-        <div class="tl-item">
+          <div class="tl-details">Hotel check-in available after 3:00 PM</div><button class="btn-delete-item" title="Delete item">×</button></div>
+        <div class="tl-item"><div class="drag-handle" title="Drag to reorder">⠿</div>
     <div class="tl-row">
       <span class="tl-time">5:00 PM</span>
       <span class="tl-event">Bryan &amp; Gaby Arrive</span>
       <span class="tl-who">Bryan, Gaby, Tori, Jared</span>
     </div>
-    <div class="tl-details">RDU Airport Pick up</div></div>
-        <div class="tl-item">
+    <div class="tl-details">RDU Airport Pick up</div><button class="btn-delete-item" title="Delete item">×</button></div>
+        <div class="tl-item"><div class="drag-handle" title="Drag to reorder">⠿</div>
     <div class="tl-row">
       <span class="tl-time">11:30 PM</span>
       <span class="tl-event">Ben Arrives</span>
       <span class="tl-who">Ben, Tori, Jared</span>
     </div>
-    <div class="tl-details">RDU Airport Pick up</div></div>
-      </div>
+    <div class="tl-details">RDU Airport Pick up</div><button class="btn-delete-item" title="Delete item">×</button></div>
+      </div><button class="btn-add-item">+ Add Schedule Item</button>
     </div>
 
   </section>
@@ -1011,41 +1252,41 @@
       <div class="group-title"><span>Schedule</span></div>
       <div class="timeline">
         
-        <div class="tl-item">
+        <div class="tl-item"><div class="drag-handle" title="Drag to reorder">⠿</div>
     <div class="tl-row">
       <span class="tl-time">9:00 AM</span>
       <span class="tl-event">Pick Up Flowers</span>
       <span class="tl-who">Tori &amp; Jared</span>
     </div>
-    <div class="tl-details">Trader Joe's</div></div>
-        <div class="tl-item highlight">
+    <div class="tl-details">Trader Joe's</div><button class="btn-delete-item" title="Delete item">×</button></div>
+        <div class="tl-item highlight"><div class="drag-handle" title="Drag to reorder">⠿</div>
           <div class="tl-row">
             <span class="tl-time">Morning</span>
             <span class="tl-event">Make Bouquets</span>
             <span class="tl-who">Aunt Terri, Chris, Jared, Tori</span>
           </div>
-          <div class="tl-details">Flower arranging day @ Tori &amp; Jared's</div></div>
-        <div class="tl-item">
+          <div class="tl-details">Flower arranging day @ Tori &amp; Jared's</div><button class="btn-delete-item" title="Delete item">×</button></div>
+        <div class="tl-item"><div class="drag-handle" title="Drag to reorder">⠿</div>
           <div class="tl-row">
             <span class="tl-time">2:00 PM</span>
             <span class="tl-event">Spray Tan</span>
             <span class="tl-who">Tori</span>
           </div>
-          <div class="tl-details">At Jared &amp; Tori's house</div></div>
-        <div class="tl-item">
+          <div class="tl-details">At Jared &amp; Tori's house</div><button class="btn-delete-item" title="Delete item">×</button></div>
+        <div class="tl-item"><div class="drag-handle" title="Drag to reorder">⠿</div>
           <div class="tl-row">
             <span class="tl-time">After 3:00 PM</span>
-            <span class="tl-event">Check Britani &amp; Jake into Hotel</span>
+            <span class="tl-event">Check Britani, Jake &amp; Jessica into Hotel</span>
             <span class="tl-who">Britani, Jake, Jessica, Tori</span>
           </div>
-          <div class="tl-details">Hotel check-in available after 3:00 PM</div></div>
-      </div>
+          <div class="tl-details">Hotel check-in available after 3:00 PM</div><button class="btn-delete-item" title="Delete item">×</button></div>
+      </div><button class="btn-add-item">+ Add Schedule Item</button>
     </div>
 
   </section>
 
   <!-- ── FRIDAY ── -->
-  <section id="tab-fri" class="day-section active">
+  <section id="tab-fri" class="day-section">
     <div class="day-header">
       <h2>Friday, May 1</h2>
       <span class="day-badge">Rehearsal + Welcome Party</span>
@@ -1054,7 +1295,7 @@
     <div class="schedule-group">
       <div class="group-title"><span>Daytime</span></div>
       <div class="timeline">
-        <div class="tl-item highlight">
+        <div class="tl-item highlight"><div class="drag-handle" title="Drag to reorder">⠿</div>
           <div class="tl-row">
             <span class="tl-time">12:00–1:00 PM</span>
             <span class="tl-event">Wedding Rehearsal</span>
@@ -1063,8 +1304,8 @@
           <div class="tl-location">
             <svg width="10" height="13" viewBox="0 0 10 13" fill="none"><path d="M5 0C2.24 0 0 2.24 0 5c0 3.75 5 8 5 8s5-4.25 5-8c0-2.76-2.24-5-5-5zm0 6.5a1.5 1.5 0 110-3 1.5 1.5 0 010 3z" fill="currentColor"></path></svg>
             WRAL Azalea Gardens, 4601 Beryl Rd, Raleigh
-          </div></div>
-        <div class="tl-item">
+          </div><button class="btn-delete-item" title="Delete item">×</button></div>
+        <div class="tl-item"><div class="drag-handle" title="Drag to reorder">⠿</div>
     <div class="tl-row">
       <span class="tl-time">1:15 PM</span>
       <span class="tl-event">Call Sola Coffee</span>
@@ -1074,8 +1315,8 @@
     <div>
       <a href="https://www.solacoffee.com/menupage" target="_blank" rel="noopener" class="tl-link link-sage">☕ View Sola Menu</a>
       <a href="https://docs.google.com/spreadsheets/d/1vbZ2TafyK1EDqw2-gysBvKb3HWgOyzbiLQrAots-4aQ/edit?gid=0#gid=0" target="_blank" rel="noopener" class="tl-link link-gold">📋 Submit Your Order</a>
-    </div></div>
-        <div class="tl-item">
+    </div><button class="btn-delete-item" title="Delete item">×</button></div>
+        <div class="tl-item"><div class="drag-handle" title="Drag to reorder">⠿</div>
     <div class="tl-row">
       <span class="tl-time">1:30-4:00 PM</span>
       <span class="tl-event">Zinc House Hangout - Optional</span>
@@ -1084,21 +1325,21 @@
     <div class="tl-location">
       <svg width="10" height="13" viewBox="0 0 10 13" fill="none"><path d="M5 0C2.24 0 0 2.24 0 5c0 3.75 5 8 5 8s5-4.25 5-8c0-2.76-2.24-5-5-5zm0 6.5a1.5 1.5 0 110-3 1.5 1.5 0 010 3z" fill="currentColor"></path></svg>
       Zinc House, 6225 Wake Forest Hwy, Durham, NC 27703
-    </div></div>
-        <div class="tl-item">
+    </div><button class="btn-delete-item" title="Delete item">×</button></div>
+        <div class="tl-item"><div class="drag-handle" title="Drag to reorder">⠿</div>
     <div class="tl-row">
       <span class="tl-time">TBD</span>
       <span class="tl-event">Pick Up Wegmans Subs</span>
       <span class="tl-who">Tori &amp; Jared</span>
     </div>
-    <div class="tl-details">For the welcome party at Bowstring Brewing</div></div>
-      </div>
+    <div class="tl-details">For the welcome party at Bowstring Brewing</div><button class="btn-delete-item" title="Delete item">×</button></div>
+      </div><button class="btn-add-item">+ Add Schedule Item</button>
     </div>
 
     <div class="schedule-group">
       <div class="group-title"><span>Welcome Party</span></div>
       <div class="timeline">
-        <div class="tl-item highlight">
+        <div class="tl-item highlight"><div class="drag-handle" title="Drag to reorder">⠿</div>
           <div class="tl-row">
             <span class="tl-time">6:30 PM</span>
             <span class="tl-event">Welcome Party Begins</span>
@@ -1110,19 +1351,19 @@
           </div>
           <div class="tl-details" style="margin-top:8px; color: var(--warm-brown); font-style:italic;">
             Casual attire — come ready to relax and enjoy the evening!
-          </div></div>
-        <div class="tl-item">
+          </div><button class="btn-delete-item" title="Delete item">×</button></div>
+        <div class="tl-item"><div class="drag-handle" title="Drag to reorder">⠿</div>
           <div class="tl-row">
             <span class="tl-time">9:30 PM</span>
             <span class="tl-event">Welcome Party Concludes</span>
-          </div></div>
-      </div>
+          </div><button class="btn-delete-item" title="Delete item">×</button></div>
+      </div><button class="btn-add-item">+ Add Schedule Item</button>
     </div>
 
   </section>
 
   <!-- ── SATURDAY ── -->
-  <section id="tab-sat" class="day-section">
+  <section id="tab-sat" class="day-section active">
     <div class="day-header">
       <h2>Saturday, May 2</h2>
       <span class="day-badge">Wedding Day 🌿</span>
@@ -1146,73 +1387,73 @@
       </div>
 
       <div class="timeline">
-        <div class="tl-item">
+        <div class="tl-item"><div class="drag-handle" title="Drag to reorder">⠿</div>
           <div class="tl-row">
             <span class="tl-time">7:00 AM</span>
             <span class="tl-event">Pick Up Breakfast &amp; Coffee</span>
-            <span class="tl-who">Ben, Bryan, Jared, Isaiah</span>
+            <span class="tl-who">Ben, Bryan, and Jared</span>
           </div>
-          <div class="tl-details">Sola Coffee — bring back to the Airbnb</div></div>
-        <div class="tl-item">
+          <div class="tl-details">Sola Coffee — bring back to the Airbnb</div><button class="btn-delete-item" title="Delete item">×</button></div>
+        <div class="tl-item"><div class="drag-handle" title="Drag to reorder">⠿</div>
           <div class="tl-row">
             <span class="tl-time">7:30 AM</span>
             <span class="tl-event">Bridesmaids Arrive at Airbnb</span>
             <span class="tl-who">Bridesmaids + Tori</span>
-          </div></div>
-        <div class="tl-item">
+          </div><button class="btn-delete-item" title="Delete item">×</button></div>
+        <div class="tl-item"><div class="drag-handle" title="Drag to reorder">⠿</div>
           <div class="tl-row">
             <span class="tl-time">8:00 AM</span>
             <span class="tl-event">Makeup Artist &amp; Hair Dresser Arrive</span>
             <span class="tl-who">Bridesmaids + Tori</span>
           </div>
-          <div class="tl-details">At the Airbnb — hair &amp; makeup begins</div></div>
-        <div class="tl-item">
+          <div class="tl-details">At the Airbnb — hair &amp; makeup begins</div><button class="btn-delete-item" title="Delete item">×</button></div>
+        <div class="tl-item"><div class="drag-handle" title="Drag to reorder">⠿</div>
           <div class="tl-row">
             <span class="tl-time">8:30–9:00 AM</span>
-            <span class="tl-event">Groomsmen Arrive at Airbnb</span>
-            <span class="tl-who">Groomsmen</span>
-          </div></div>
-        <div class="tl-item highlight">
+            <span class="tl-event">Groomsmen, Chris &amp; Lynn Arrive at Airbnb</span>
+            <span class="tl-who">Groomsmen, Chris &amp; Lynn</span>
+          </div><button class="btn-delete-item" title="Delete item">×</button></div>
+        <div class="tl-item highlight"><div class="drag-handle" title="Drag to reorder">⠿</div>
           <div class="tl-row">
             <span class="tl-time">8:20 AM–1:00 PM</span>
             <span class="tl-event">Hair + Makeup</span>
             <span class="tl-who">Bridesmaids + Tori</span>
           </div>
-          <div class="tl-details">All girls must be ready by 1:00 PM — photographer arrives at 1:00 PM</div></div>
-        <div class="tl-item">
+          <div class="tl-details">All girls must be ready by 1:00 PM — photographer arrives at 1:00 PM</div><button class="btn-delete-item" title="Delete item">×</button></div>
+        <div class="tl-item"><div class="drag-handle" title="Drag to reorder">⠿</div>
           <div class="tl-row">
             <span class="tl-time">12:00 PM</span>
             <span class="tl-event">Groomsmen Go to Second Empire</span>
             <span class="tl-who">Groomsmen</span>
           </div>
-          <div class="tl-details">Set up and prepare the reception room</div></div>
-        <div class="tl-item highlight">
+          <div class="tl-details">Set up and prepare the reception room</div><button class="btn-delete-item" title="Delete item">×</button></div>
+        <div class="tl-item highlight"><div class="drag-handle" title="Drag to reorder">⠿</div>
           <div class="tl-row">
             <span class="tl-time">1:00 PM</span>
             <span class="tl-event">Photographer Arrives — 8 Hours Begins</span>
           </div>
-          <div class="tl-details">Naomi Turner · 252-940-3909 · At the Airbnb</div></div>
-        <div class="tl-item">
+          <div class="tl-details">Naomi Turner · 252-940-3909 · At the Airbnb</div><button class="btn-delete-item" title="Delete item">×</button></div>
+        <div class="tl-item"><div class="drag-handle" title="Drag to reorder">⠿</div>
           <div class="tl-row">
             <span class="tl-time">1:00 PM</span>
             <span class="tl-event">Photos — Getting Ready</span>
           </div>
-          <div class="tl-details">Getting ready photos, Mom + Bride, Bride + Dad, Groom + Dad, Groom + Mom</div></div>
-        <div class="tl-item highlight">
+          <div class="tl-details">Getting ready photos</div><button class="btn-delete-item" title="Delete item">×</button></div>
+        <div class="tl-item highlight"><div class="drag-handle" title="Drag to reorder">⠿</div>
           <div class="tl-row">
             <span class="tl-time">2:45 PM</span>
             <span class="tl-event">Depart Airbnb for WRAL Gardens</span>
             <span class="tl-who">Wedding party</span>
           </div>
-          <div class="tl-details">⚠️ Must leave by 2:45 PM to arrive on time</div></div>
-      </div>
+          <div class="tl-details">⚠️ Must leave by 2:45 PM to arrive on time. Planning to book 2 Ubers and drive Tori's car</div><button class="btn-delete-item" title="Delete item">×</button></div>
+      </div><button class="btn-add-item">+ Add Schedule Item</button>
     </div>
 
     <!-- CEREMONY -->
     <div class="schedule-group">
       <div class="group-title"><span>The Ceremony</span></div>
       <div class="timeline">
-        <div class="tl-item">
+        <div class="tl-item"><div class="drag-handle" title="Drag to reorder">⠿</div>
           <div class="tl-row">
             <span class="tl-time">3:15 PM</span>
             <span class="tl-event">Wedding Party Arrives at Gardens</span>
@@ -1221,38 +1462,38 @@
           <div class="tl-location">
             <svg width="10" height="13" viewBox="0 0 10 13" fill="none"><path d="M5 0C2.24 0 0 2.24 0 5c0 3.75 5 8 5 8s5-4.25 5-8c0-2.76-2.24-5-5-5zm0 6.5a1.5 1.5 0 110-3 1.5 1.5 0 010 3z" fill="currentColor"></path></svg>
             WRAL Azalea Gardens, 4601 Beryl Rd
-          </div></div>
-        <div class="tl-item">
+          </div><button class="btn-delete-item" title="Delete item">×</button></div>
+        <div class="tl-item"><div class="drag-handle" title="Drag to reorder">⠿</div>
           <div class="tl-row">
             <span class="tl-time">3:15–4:40 PM</span>
             <span class="tl-event">Pre-Ceremony Photos</span>
             <span class="tl-who">Wedding party</span>
           </div>
-          <div class="tl-details">First look, vows, and bridal party photos at WRAL Garden</div></div>
-        <div class="tl-item">
+          <div class="tl-details">First look, vows, and bridal party photos at WRAL Garden</div><button class="btn-delete-item" title="Delete item">×</button></div>
+        <div class="tl-item"><div class="drag-handle" title="Drag to reorder">⠿</div>
           <div class="tl-row">
             <span class="tl-time">3:30 PM</span>
             <span class="tl-event">WRAL Gardens Reserved — Garden Ceremony Area Access Begins</span>
           </div>
-          <div class="tl-details">Reserved 3:30 PM – 6:00 PM</div></div>
-        <div class="tl-item">
+          <div class="tl-details">Reserved 3:30 PM – 6:00 PM</div><button class="btn-delete-item" title="Delete item">×</button></div>
+        <div class="tl-item"><div class="drag-handle" title="Drag to reorder">⠿</div>
           <div class="tl-row">
             <span class="tl-time">3:45 PM</span>
             <span class="tl-event">Trolley Pick-Up Begins</span>
           </div>
-          <div class="tl-details">Trolley transports guests to WRAL Gardens from Second Empire · Rental: 3:45–7:45 PM</div></div>
-        <div class="tl-item">
+          <div class="tl-details">Trolley transports guests to WRAL Gardens from Second Empire · Rental: 3:45–7:45 PM. Parents to ride the first trolley to garden. One car to be parked in the parking lot behind Second Empire.</div><button class="btn-delete-item" title="Delete item">×</button></div>
+        <div class="tl-item"><div class="drag-handle" title="Drag to reorder">⠿</div>
           <div class="tl-row">
             <span class="tl-time">~4:00 PM</span>
             <span class="tl-event">First Guests Arrive at Gardens</span>
-          </div></div>
-        <div class="tl-item">
+          </div><button class="btn-delete-item" title="Delete item">×</button></div>
+        <div class="tl-item"><div class="drag-handle" title="Drag to reorder">⠿</div>
           <div class="tl-row">
             <span class="tl-time">4:40–5:00 PM</span>
             <span class="tl-event">Guests Take Seats — Ceremony Prep</span>
           </div>
-          <div class="tl-details">Please be seated by 4:45 PM</div></div>
-        <div class="tl-item highlight">
+          <div class="tl-details">Please be seated by 4:45 PM. Parents to welcome guests</div><button class="btn-delete-item" title="Delete item">×</button></div>
+        <div class="tl-item highlight"><div class="drag-handle" title="Drag to reorder">⠿</div>
           <div class="tl-row">
             <span class="tl-time">5:00 PM</span>
             <span class="tl-event">✦ Wedding Ceremony ✦</span>
@@ -1261,49 +1502,49 @@
           <div class="tl-location">
             <svg width="10" height="13" viewBox="0 0 10 13" fill="none"><path d="M5 0C2.24 0 0 2.24 0 5c0 3.75 5 8 5 8s5-4.25 5-8c0-2.76-2.24-5-5-5zm0 6.5a1.5 1.5 0 110-3 1.5 1.5 0 010 3z" fill="currentColor"></path></svg>
             WRAL Azalea Gardens, 4601 Beryl Rd, Raleigh
-          </div></div>
+          </div><button class="btn-delete-item" title="Delete item">×</button></div>
         
-        <div class="tl-item">
+        <div class="tl-item"><div class="drag-handle" title="Drag to reorder">⠿</div>
     <div class="tl-row">
       <span class="tl-time">5:20 - 6:00 PM</span>
       <span class="tl-event">Family Photos</span>
       <span class="tl-who">Tori &amp; Jared + Family</span>
     </div>
-    <div class="tl-details">Immediate family photos + To</div></div><div class="tl-item">
+    <div class="tl-details">Immediate family photos + other photos</div><button class="btn-delete-item" title="Delete item">×</button></div><div class="tl-item"><div class="drag-handle" title="Drag to reorder">⠿</div>
           <div class="tl-row">
             <span class="tl-time">5:45 PM</span>
             <span class="tl-event">First Trolley Departs WRAL</span>
             <span class="tl-who">All guests + parents, not bridal party</span>
           </div>
-          <div class="tl-details">Arrives at Second Empire ~5:55 PM</div></div>
-        <div class="tl-item">
+          <div class="tl-details">Arrives at Second Empire ~5:55 PM</div><button class="btn-delete-item" title="Delete item">×</button></div>
+        <div class="tl-item"><div class="drag-handle" title="Drag to reorder">⠿</div>
           <div class="tl-row">
             <span class="tl-time">6:00 PM</span>
             <span class="tl-event">WRAL Reservation Ends</span>
           </div>
-          <div class="tl-details">Guests line up for trolley to Second Empire</div></div>
+          <div class="tl-details">Guests line up for trolley to Second Empire</div><button class="btn-delete-item" title="Delete item">×</button></div>
         
-        <div class="tl-item">
+        <div class="tl-item"><div class="drag-handle" title="Drag to reorder">⠿</div>
     <div class="tl-row">
       <span class="tl-time">6:10 PM</span>
       <span class="tl-event">Second Trolley Departs WRAL</span>
       <span class="tl-who">All guests, not bridal party</span>
     </div>
-    <div class="tl-details">Arrives at Second Empire ~6:20 PM</div></div><div class="tl-item">
+    <div class="tl-details">Arrives at Second Empire ~6:20 PM</div><button class="btn-delete-item" title="Delete item">×</button></div><div class="tl-item"><div class="drag-handle" title="Drag to reorder">⠿</div>
           <div class="tl-row">
             <span class="tl-time">6:30 PM</span>
             <span class="tl-event">Final Trolley Departs WRAL</span>
             <span class="tl-who">Bridal party + plus-ones</span>
           </div>
-          <div class="tl-details">Arrives at Second Empire ~6:40 PM</div></div>
-      </div>
+          <div class="tl-details">Arrives at Second Empire ~6:40 PM</div><button class="btn-delete-item" title="Delete item">×</button></div>
+      </div><button class="btn-add-item">+ Add Schedule Item</button>
     </div>
 
     <!-- RECEPTION -->
     <div class="schedule-group">
       <div class="group-title"><span>The Reception</span></div>
       <div class="timeline">
-        <div class="tl-item highlight">
+        <div class="tl-item highlight"><div class="drag-handle" title="Drag to reorder">⠿</div>
           <div class="tl-row">
             <span class="tl-time">6:15–7:15 PM</span>
             <span class="tl-event">Cocktail Hour</span>
@@ -1312,42 +1553,42 @@
           <div class="tl-location">
             <svg width="10" height="13" viewBox="0 0 10 13" fill="none"><path d="M5 0C2.24 0 0 2.24 0 5c0 3.75 5 8 5 8s5-4.25 5-8c0-2.76-2.24-5-5-5zm0 6.5a1.5 1.5 0 110-3 1.5 1.5 0 010 3z" fill="currentColor"></path></svg>
             Second Empire, 330 Hillsborough St, Raleigh
-          </div></div>
-        <div class="tl-item">
+          </div><button class="btn-delete-item" title="Delete item">×</button></div>
+        <div class="tl-item"><div class="drag-handle" title="Drag to reorder">⠿</div>
           <div class="tl-row">
             <span class="tl-time">7:15–7:45 PM</span>
             <span class="tl-event">Speeches &amp; Toasts</span>
-          </div></div>
-        <div class="tl-item highlight">
+          </div><button class="btn-delete-item" title="Delete item">×</button></div>
+        <div class="tl-item highlight"><div class="drag-handle" title="Drag to reorder">⠿</div>
           <div class="tl-row">
             <span class="tl-time">7:30–8:45 PM</span>
             <span class="tl-event">Dinner &amp; Celebration</span>
             <span class="tl-who">All guests</span>
           </div>
-          <div class="tl-details">Enjoy dinner and drinks</div></div>
+          <div class="tl-details">Enjoy dinner and drinks</div><button class="btn-delete-item" title="Delete item">×</button></div>
         
-      <div class="tl-item">
+      <div class="tl-item"><div class="drag-handle" title="Drag to reorder">⠿</div>
     <div class="tl-row">
       <span class="tl-time">9:10 - 9:30 PM</span>
       <span class="tl-event">Wedding Decor/Items Pack-up</span>
       <span class="tl-who">Jared + Groomsmen</span>
     </div>
-    <div class="tl-details">Remove all wedding decor/items and pack the car</div></div></div>
+    <div class="tl-details">Remove all wedding decor/items and pack the car</div><button class="btn-delete-item" title="Delete item">×</button></div></div><button class="btn-add-item">+ Add Schedule Item</button>
     </div>
 
     <!-- AFTER PARTY -->
     <div class="schedule-group">
       <div class="group-title"><span>The After Party</span></div>
       <div class="timeline">
-        <div class="tl-item highlight">
+        <div class="tl-item highlight"><div class="drag-handle" title="Drag to reorder">⠿</div>
           <div class="tl-row">
             <span class="tl-time">~9:30 PM</span>
             <span class="tl-event">After Party Begins — Continue the Celebration!</span>
           </div>
-          <div class="tl-details">Downtown Raleigh</div></div>
+          <div class="tl-details">Downtown Raleigh</div><button class="btn-delete-item" title="Delete item">×</button></div>
         
         
-      </div>
+      </div><button class="btn-add-item">+ Add Schedule Item</button>
     </div>
 
   </section>
@@ -1396,44 +1637,44 @@
               <td>8:00–8:20 AM</td>
               <td></td>
               <td>Dorothy (Makeup Artist) — Arrival &amp; Setup</td>
-            </tr>
+            <td><button class="btn-delete-tr" title="Delete row">×</button></td></tr>
             <tr>
               <td>8:20–9:00 AM</td>
               <td></td>
               <td>Gaby</td>
-            </tr>
+            <td><button class="btn-delete-tr" title="Delete row">×</button></td></tr>
             <tr>
               <td>9:00–9:40 AM</td>
               <td></td>
               <td>Lauren</td>
-            </tr>
+            <td><button class="btn-delete-tr" title="Delete row">×</button></td></tr>
             <tr>
               <td>9:40–10:20 AM</td>
               <td></td>
               <td>Britani</td>
-            </tr>
+            <td><button class="btn-delete-tr" title="Delete row">×</button></td></tr>
             <tr>
               <td>10:20–11:00 AM</td>
               <td></td>
               <td>Chris — Mother of the Bride</td>
-            </tr>
+            <td><button class="btn-delete-tr" title="Delete row">×</button></td></tr>
             <tr>
               <td>11:00–11:40 AM</td>
               <td></td>
               <td>Tori</td>
-            </tr>
+            <td><button class="btn-delete-tr" title="Delete row">×</button></td></tr>
             <tr>
               <td>11:40 AM–12:20 PM</td>
               <td></td>
               <td>Tori (continued)</td>
-            </tr>
+            <td><button class="btn-delete-tr" title="Delete row">×</button></td></tr>
             <tr>
               <td>12:20–1:00 PM</td>
               <td></td>
               <td>Andrea</td>
-            </tr>
+            <td><button class="btn-delete-tr" title="Delete row">×</button></td></tr>
           </tbody>
-        </table></div>
+        </table><button class="btn-add-hmrow">+ Add Row</button></div>
     </div>
 
   </section>
@@ -1448,18 +1689,193 @@
   <p>WRAL Azalea Gardens &nbsp;·&nbsp; Second Empire Restaurant &amp; Tavern</p>
 </footer>
 
+<div class="edit-fab">
+  <button class="fab-btn fab-save" onclick="saveHTML()">⬇ Save File</button>
+  <button class="fab-btn fab-done" onclick="toggleEdit()">✓ Done Editing</button>
+  <button class="fab-btn fab-edit" onclick="toggleEdit()">✏️ Edit</button>
+</div>
+
+
 <script>
+'use strict';
+
+/* ── TAB SWITCHING ── */
 function switchTab(id) {
   document.querySelectorAll('.day-section').forEach(s => s.classList.remove('active'));
-  document.querySelectorAll('.tab-btn').forEach(b => {
-    b.classList.remove('active');
-    b.setAttribute('aria-selected', 'false');
-  });
-  document.getElementById('tab-' + id).classList.add('active');
-  const map = { wed: 0, thu: 1, fri: 2, sat: 3, hm: 4 };
+  document.querySelectorAll('.tab-btn').forEach(b => { b.classList.remove('active'); b.setAttribute('aria-selected','false'); });
+  document.getElementById('tab-'+id).classList.add('active');
+  const map = {wed:0,thu:1,fri:2,sat:3,hm:4};
   document.querySelectorAll('.tab-btn')[map[id]].classList.add('active');
-  document.querySelectorAll('.tab-btn')[map[id]].setAttribute('aria-selected', 'true');
-  window.scrollTo({ top: 0, behavior: 'smooth' });
+  document.querySelectorAll('.tab-btn')[map[id]].setAttribute('aria-selected','true');
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+
+/* ── EDITABLE FIELDS ── */
+const TEXT_FIELDS = [
+  '.hero-eyebrow','.hero h1','.hero-sub','.hero-location',
+  '.vc-label','.vc-name','.vc-time','.vc-addr',
+  '.tl-time','.tl-event','.tl-who','.tl-details','.tl-location',
+  '.day-header h2','.day-header .day-badge',
+  '.group-title span',
+  '.ic-title','.ic-val','.ic-sub','.ic-icon',
+  '.footer-motif','.footer p',
+  '.tab-btn .tab-day',
+];
+
+function setEditable(on) {
+  TEXT_FIELDS.forEach(sel => {
+    document.querySelectorAll(sel).forEach(el => {
+      el.contentEditable = on ? 'true' : 'false';
+      if (on && !el.dataset.ph) el.dataset.ph = el.textContent.trim() || 'Edit…';
+    });
+  });
+  document.querySelectorAll('.hm-table td:not(:last-child)').forEach(td => {
+    td.contentEditable = on ? 'true' : 'false';
+    if (on && !td.dataset.ph) td.dataset.ph = td.textContent.trim() || '…';
+  });
+}
+
+function focusEnd(el) {
+  el.focus();
+  try { const r=document.createRange(),s=window.getSelection(); r.selectNodeContents(el); r.collapse(false); s.removeAllRanges(); s.addRange(r); } catch(e){}
+}
+
+/* ── DRAG & DROP ── */
+let dragSrc = null;
+const dropLine = document.getElementById('dropLine');
+
+function getDropTarget(tl, y) {
+  const items = [...tl.querySelectorAll(':scope > .tl-item')];
+  for (const it of items) { const r=it.getBoundingClientRect(); if (y < r.top+r.height/2) return {before:it}; }
+  return {before:null};
+}
+function showDropLine(ref, tl) { ref ? ref.parentNode.insertBefore(dropLine,ref) : tl.appendChild(dropLine); dropLine.classList.add('visible'); }
+function hideDropLine() { dropLine.classList.remove('visible'); if (dropLine.parentNode) dropLine.parentNode.removeChild(dropLine); }
+
+function makeTimelineDropZone(tl) {
+  tl.addEventListener('dragover', e => {
+    if (!dragSrc?.classList.contains('tl-item')) return;
+    e.preventDefault(); e.dataTransfer.dropEffect='move';
+    showDropLine(getDropTarget(tl,e.clientY).before, tl);
+  });
+  tl.addEventListener('dragleave', e => { if (!tl.contains(e.relatedTarget)) hideDropLine(); });
+  tl.addEventListener('drop', e => {
+    e.preventDefault();
+    if (!dragSrc?.classList.contains('tl-item')) return;
+    const {before} = getDropTarget(tl,e.clientY);
+    before ? tl.insertBefore(dragSrc,before) : tl.appendChild(dragSrc);
+    hideDropLine();
+  });
+}
+
+let dragVenue = null;
+function makeVenueDraggable(card) {
+  card.setAttribute('draggable','true');
+  card.addEventListener('dragstart', e => { dragVenue=card; card.classList.add('is-dragging'); e.dataTransfer.effectAllowed='move'; e.dataTransfer.setData('text/plain',''); });
+  card.addEventListener('dragend', () => { card.classList.remove('is-dragging'); document.querySelectorAll('.venue-card').forEach(c=>c.classList.remove('drop-target-before')); dragVenue=null; });
+  card.addEventListener('dragover', e => { if (!dragVenue||dragVenue===card) return; e.preventDefault(); document.querySelectorAll('.venue-card').forEach(c=>c.classList.remove('drop-target-before')); card.classList.add('drop-target-before'); });
+  card.addEventListener('drop', e => { e.preventDefault(); if (!dragVenue||dragVenue===card) return; card.parentNode.insertBefore(dragVenue,card); document.querySelectorAll('.venue-card').forEach(c=>c.classList.remove('drop-target-before')); });
+}
+
+/* ── INIT CONTROLS ── */
+document.addEventListener('DOMContentLoaded', () => {
+  document.querySelectorAll('.tl-item').forEach(initTlItem);
+  document.querySelectorAll('.timeline').forEach(tl => {
+    makeTimelineDropZone(tl);
+    const btn = document.createElement('button'); btn.className='btn-add-item'; btn.textContent='+ Add Schedule Item';
+    btn.onclick = () => addTimelineItem(tl);
+    tl.parentNode.insertBefore(btn, tl.nextSibling);
+  });
+  document.querySelectorAll('.venue-card').forEach(initVenueCard);
+  const oi = document.querySelector('.overview-inner');
+  if (oi) {
+    const b = document.createElement('button'); b.className='btn-add-venue'; b.textContent='+ Add Venue';
+    b.onclick = () => {
+      const card = makeVenueCard({label:'Event',name:'Venue Name',time:'Date & Time',addr:'Address'});
+      oi.insertBefore(card, b);
+      if (document.body.classList.contains('editing')) { card.querySelectorAll('.vc-label,.vc-name,.vc-time,.vc-addr').forEach(el=>{el.contentEditable='true';el.dataset.ph=el.textContent.trim();}); }
+      focusEnd(card.querySelector('.vc-name'));
+    };
+    oi.appendChild(b);
+  }
+  const hmTbody = document.querySelector('.hm-table tbody');
+  if (hmTbody) {
+    hmTbody.querySelectorAll('tr').forEach(addDeleteTr);
+    const b = document.createElement('button'); b.className='btn-add-hmrow'; b.textContent='+ Add Row';
+    b.onclick = () => {
+      const tr = document.createElement('tr'); tr.innerHTML='<td></td><td></td><td></td>';
+      addDeleteTr(tr); hmTbody.appendChild(tr);
+      if (document.body.classList.contains('editing')) { tr.querySelectorAll('td:not(:last-child)').forEach(td=>{td.contentEditable='true';td.dataset.ph='Edit…';}); focusEnd(tr.querySelector('td')); }
+    };
+    hmTbody.parentNode.parentNode.appendChild(b);
+  }
+});
+
+function initTlItem(item) {
+  const handle = document.createElement('div'); handle.className='drag-handle'; handle.innerHTML='⠿'; handle.title='Drag to reorder';
+  item.insertBefore(handle, item.firstChild);
+  handle.addEventListener('mousedown', () => item.setAttribute('draggable','true'));
+  handle.addEventListener('mouseup',   () => item.setAttribute('draggable','false'));
+  item.setAttribute('draggable','false');
+  item.addEventListener('dragstart', e => {
+    if (item.getAttribute('draggable')==='false') { e.preventDefault(); return; }
+    dragSrc=item; item.classList.add('is-dragging'); e.dataTransfer.effectAllowed='move'; e.dataTransfer.setData('text/plain','');
+  });
+  item.addEventListener('dragend', () => { item.classList.remove('is-dragging'); item.setAttribute('draggable','false'); hideDropLine(); dragSrc=null; });
+  const del = document.createElement('button'); del.className='btn-delete-item'; del.title='Delete item'; del.textContent='×';
+  del.onclick = () => { item.style.transition='opacity 0.2s,transform 0.2s'; item.style.opacity='0'; item.style.transform='translateX(8px)'; setTimeout(()=>item.remove(),200); };
+  item.appendChild(del);
+}
+
+function addTimelineItem(tl) {
+  const item = document.createElement('div'); item.className='tl-item';
+  item.innerHTML='<div class="tl-row"><span class="tl-time">Time</span><span class="tl-event">Event name</span><span class="tl-who">Who</span></div><div class="tl-details">Details / location</div>';
+  initTlItem(item);
+  if (document.body.classList.contains('editing')) { item.querySelectorAll('.tl-time,.tl-event,.tl-who,.tl-details').forEach(el=>{el.contentEditable='true';el.dataset.ph=el.textContent.trim();}); }
+  tl.appendChild(item);
+  item.style.opacity='0'; item.style.transform='translateY(6px)'; item.style.transition='opacity 0.25s,transform 0.25s';
+  requestAnimationFrame(()=>{ item.style.opacity=''; item.style.transform=''; });
+  focusEnd(item.querySelector('.tl-time'));
+}
+
+function initVenueCard(card) {
+  const del = document.createElement('button'); del.className='btn-delete-card'; del.title='Delete venue'; del.textContent='×';
+  del.onclick = () => { card.style.transition='opacity 0.2s,transform 0.2s'; card.style.opacity='0'; card.style.transform='scale(0.95)'; setTimeout(()=>card.remove(),200); };
+  card.appendChild(del);
+  makeVenueDraggable(card);
+}
+
+function makeVenueCard({label,name,time,addr}) {
+  const card = document.createElement('div'); card.className='venue-card';
+  card.innerHTML=`<div class="vc-label">${label}</div><div class="vc-name">${name}</div><div class="vc-time">${time}</div><div class="vc-addr">${addr}</div>`;
+  initVenueCard(card); return card;
+}
+
+function addDeleteTr(tr) {
+  const td = document.createElement('td'); const btn = document.createElement('button');
+  btn.className='btn-delete-tr'; btn.title='Delete row'; btn.textContent='×'; btn.onclick=()=>tr.remove();
+  td.appendChild(btn); tr.appendChild(td);
+}
+
+/* ── TOGGLE EDIT ── */
+function toggleEdit() {
+  const on = document.body.classList.toggle('editing');
+  setEditable(on);
+  document.querySelectorAll('.timeline').forEach(makeTimelineDropZone);
+  document.querySelectorAll('.venue-card').forEach(c => c.setAttribute('draggable', on ? 'true' : 'false'));
+  if (!on) hideDropLine();
+}
+
+/* ── SAVE FILE ── */
+function saveHTML() {
+  const clone = document.documentElement.cloneNode(true);
+  clone.querySelector('body')?.classList.remove('editing');
+  clone.querySelectorAll('[contenteditable]').forEach(el=>el.removeAttribute('contenteditable'));
+  clone.querySelectorAll('[data-ph]').forEach(el=>el.removeAttribute('data-ph'));
+  clone.querySelectorAll('#dropLine').forEach(el=>el.remove());
+  clone.querySelectorAll('[draggable]').forEach(el=>el.removeAttribute('draggable'));
+  const blob = new Blob(['<!DOCTYPE html>\n'+clone.outerHTML],{type:'text/html'});
+  const a = document.createElement('a'); a.href=URL.createObjectURL(blob); a.download='wedding_schedule.html'; a.click(); URL.revokeObjectURL(a.href);
 }
 </script>
 
